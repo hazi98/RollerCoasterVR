@@ -1,20 +1,3 @@
-/******************************************
- * My Login
- *
- * Bootstrap 4 Login Page
- *
- * @author          Muhamad Nauval Azhar
- * @uri 			https://nauval.in
- * @copyright       Copyright (c) 2018 Muhamad Nauval Azhar
- * @license         My Login is licensed under the MIT license.
- * @github          https://github.com/nauvalazhar/my-login
- * @version         1.2.0
- *
- * Help me to keep this project alive
- * https://www.buymeacoffee.com/mhdnauvalazhar
- * 
- ******************************************/
-
 'use strict';
 
 $(function () {
@@ -74,10 +57,81 @@ $(function () {
 
 	$(".my-login-validation").submit(function () {
 		var form = $(this);
+		var re = "";
+
+		if (form[0].username.value == "") {
+			alert("Error: Username cannot be blank!");
+			form[0].username.focus();
+			return false;
+		}
+		if ($('#invuser').attr('invalid_username') === "true") {
+			alert("Error: Username is already taken.");
+			form[0].username.focus();
+			return false;
+		}
+		re = /^\w+$/;
+		if (!re.test(form[0].username.value)) {
+			alert("Error: Username must contain only letters, numbers and underscores!");
+			$("#username").addClass('is-invalid');
+			form[0].username.focus();
+			return false;
+		}
+		if (form[0].typeof.value == "register") {
+
+			if (form[0].password.value != "" && form[0].password.value == form[0].confirm_password.value) {
+				if (form[0].email.value == "") {
+					$("#email").addClass('is-invalid');
+					return false;
+				} else {
+					var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+					if (regMail.test($("#email").val()) == false) {
+						$("#email").addClass('is-invalid');
+						return false;
+					} else {
+						$("#email").removeClass('is-invalid');
+					}
+
+				}
+				if (form[0].password.value.length < 6) {
+					alert("Error: Password must contain at least six characters!");
+					form[0].password.focus();
+					return false;
+				}
+				if (form[0].password.value == form[0].username.value) {
+					alert("Error: Password must be different from Username!");
+					form[0].password.focus();
+					return false;
+				}
+				re = /[0-9]/;
+				if (!re.test(form[0].password.value)) {
+					alert("Error: password must contain at least one number (0-9)!");
+					form[0].password.focus();
+					return false;
+				}
+				re = /[a-z]/;
+				if (!re.test(form[0].password.value)) {
+					alert("Error: password must contain at least one lowercase letter (a-z)!");
+					form[0].password.focus();
+					return false;
+				}
+				re = /[A-Z]/;
+				if (!re.test(form[0].password.value)) {
+					alert("Error: password must contain at least one uppercase letter (A-Z)!");
+					form[0].password.focus();
+					return false;
+				}
+			} else {
+				alert("Error: Please check that you've entered and confirmed your password!");
+				$("#confirm_password").addClass('is-invalid');
+				form[0].password.focus();
+				return false;
+			}
+		}
 		if (form[0].checkValidity() === false) {
 			event.preventDefault();
 			event.stopPropagation();
 		}
 		form.addClass('was-validated');
+		return true;
 	});
 });

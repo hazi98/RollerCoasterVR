@@ -16,9 +16,24 @@
     <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $.ajax({
+            method: "POST",
+            url: 'php/redirect.php',
+            async: false,
+        }).done(function (data) {
+            console.log(data);
+            if (data === '1') {
+                window.location = 'php/welcome.php';
+            }
+        });
+    </script>
 </head>
 
 <body class="my-login-page blue-bg">
+
+
     <section class="h-100">
         <div class="container h-100">
             <div class="row justify-content-md-center h-100">
@@ -29,13 +44,17 @@
                     <div class="card fat">
                         <div class="card-body">
                             <h4 class="card-title">Login</h4>
-                            <form method="POST" class="my-login-validation" novalidate="">
+                            <div id="alert-msg" class="alert alert-warning alert-dismissible fade" role="alert">
+
+                            </div>
+                            <span class="help-block"></span>
+                            <form method="POST" id="login" class="my-login-validation" novalidate="">
                                 <div class="form-group">
-                                    <label for="email">E-Mail Address</label>
-                                    <input id="email" type="email" class="form-control" name="email" value="" required
-                                        autofocus>
+                                    <label for="username">Username</label>
+                                    <input id="username" type="text" class="form-control" name="username" value=""
+                                        required autofocus autocomplete="username">
                                     <div class="invalid-feedback">
-                                        Email is invalid
+                                        Username is invalid
                                     </div>
                                 </div>
 
@@ -46,10 +65,11 @@
                                         </a>
                                     </label>
                                     <input id="password" type="password" class="form-control" name="password" required
-                                        data-eye>
+                                        data-eye autocomplete="current-password">
                                     <div class="invalid-feedback">
                                         Password is required
                                     </div>
+
                                 </div>
 
                                 <div class="form-group">
@@ -59,9 +79,10 @@
                                         <label for="remember" class="custom-control-label">Remeber Me</label>
                                     </div>
                                 </div>
+                                <input type="hidden" name="typeof" value="login">
 
                                 <div class="form-group m-0">
-                                    <button type="submit" class="btn btn-primary btn-block">
+                                    <button type="submit" class="btn btn-primary btn-block button">
                                         Login
                                     </button>
                                 </div>
@@ -77,15 +98,28 @@
                 </div>
             </div>
         </div>
-    </section>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
+    </section>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="styles/bootstrap4/popper.min.js"></script>
     <script src="js/my-login.js"></script>
+    <script>
+        $('#login').submit(function (e) {
+            e.preventDefault();
+            var form = $(this).serialize();
+            $.post('php/login.php', form, function (data) {
+                console.log(data);
+                if (data === '1') {
+                    window.location.replace('php/welcome.php');
+                } else {
+                    $('#alert-msg').html('<strong>Error!</strong> <span id="error-msg">' + data +
+                        '</span>');
+                    $('#alert-msg').addClass('show');
+                }
+            })
+
+        })
+    </script>
 </body>
 
 </html>
