@@ -11,5 +11,5 @@ session_destroy();
 // clear cookies
 $util->clearAuthCookie();
 
-header("Location: /");
+header("Location: ../index.html");
 ?>

@@ -56,4 +56,3 @@ else if (! empty($_COOKIE["member_login"]) && ! empty($_COOKIE["random_password"
         $util->clearAuthCookie();
     }
 }
-?>

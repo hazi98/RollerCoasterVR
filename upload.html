@@ -1,0 +1,41 @@
+<?php
+$connect = mysqli_connect("");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="post" enctype="multipart/form-data" action="">
+        <input type="file" name="image" id="image">
+        <br>
+        <input type="submit" name="insert" id="insert" value="Insert">
+    </form>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        $('#insert').click(function () {
+            var image_name = $('#image').val();
+            if (image_name == '') {
+                alert("Please select image");
+                return false;
+            } else {
+                var extension = $('image').val().split('.').pop().toLowerCase();
+                if (jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == 1) {
+                    alert("invalid type of image");
+                    $('#image').val('');
+                    return false;
+                }
+            }
+        });
+    });
+</script>

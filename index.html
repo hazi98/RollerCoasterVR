@@ -8,15 +8,30 @@
     <meta name="description" content="Magic Sans Theme Park">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="plugins/owlcarousel/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="plugins/owlcarousel/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="plugins/owlcarousel/animate.css">
-    <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="styles/responsive.css">
-    <link rel="stylesheet" href="plugins/animate.min.css" />
-    <link rel="stylesheet" href="styles/cookies.css">
+    <link href="styles/bootstrap4/bootstrap.min.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="plugins/fontawesome-free-5.13.0-web/css/fontawesome.min.css" rel="stylesheet" type="text/css"
+        rel="preload" as="style">
+    <link href="plugins/fontawesome-free-5.13.0-web/css/brands.min.css" rel="stylesheet" type="text/css" rel="preload"
+        as="style">
+    <link href="plugins/fontawesome-free-5.13.0-web/css/solid.min.css" rel="stylesheet" type="text/css" rel="preload"
+        as="style">
+    <link href="plugins/owlcarousel/owl.carousel.min.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="plugins/owlcarousel/owl.carousel.min.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="plugins/owlcarousel/owl.theme.default.min.css" rel="stylesheet" type="text/css" rel="preload"
+        as="style">
+    <link href="plugins/owlcarousel/animate.min.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="fonts/PermanentMarker-Regular.ttf" rel="preload" as="font" crossorigin="anonymous">
+    <link rel="preload" href="styles/main_styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="styles/main_styles.min.css" rel="stylesheet" type="text/css">
+    </noscript>
+    <link href="styles/main_styles.min.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="styles/responsive.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="plugins/animate.min.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="styles/cookies.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="styles/bootstrap4/bootstrap-nav.min.css" rel="stylesheet" type="text/css" rel="preload" as="style">
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -25,6 +40,9 @@
     <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="plugins/jquery.validate.min.js"></script>
+    <script src="plugins/additional-methods.min.js"></script>
 </head>
 
 <body>
@@ -43,17 +61,26 @@
                             <div class="phone">(55) 1234 5678</div>
                             <div class="social">
                                 <ul class="social_list">
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-youtube-play"
-                                                aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-facebook"
-                                                aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-twitter"
-                                                aria-hidden="true"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fab fa-youtube"
+                                                aria-hidden="true"></i> YouTube</a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fab fa-facebook"
+                                                aria-hidden="true"></i> Facebook</a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fab fa-twitter"
+                                                aria-hidden="true"></i> Twitter</a></li>
                                 </ul>
                             </div>
-                            <div class="user_box ml-auto">
-                                <div class="user_box_login user_box_link"><a href="login.html">login</a></div>
-                                <div class="user_box_register user_box_link"><a href="register.html">register</a></div>
+                            <div class="user_box ml-auto" id="session_box">
+                                <div class="user_box_login user_box_link" id="login-box"><a href="login.html">login</a>
+                                </div>
+                                <div class="user_box_register user_box_link" id="register-box"><a
+                                        href="register.html">register</a></div>
+                                <div class="user_box_login user_box_link" id="wb-box" style="display: none;"><a
+                                        id="user-back">welcome
+                                        back </a></div>
+                                <div class="user_box_login user_box_link" id="account-box" style="display: none;"><a
+                                        href="account.html">account</a></div>
+                                <div class="user_box_register user_box_link" id="logout-box" style="display: none;"><a
+                                        href="php/logout.php">logout</a></div>
                             </div>
                         </div>
                     </div>
@@ -67,17 +94,17 @@
                     <div class="row">
                         <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                             <div class="logo_container">
-                                <div class="logo"><a href="index.html"><img src="images/amusement-park.png" width="40px"
-                                            alt="">Magic Sans</a>
+                                <div class="logo"><a href="index.html"><img src="images/webp/amusement-park.webp"
+                                            width="40px" alt="">Magic Sans</a>
                                 </div>
                             </div>
                             <div class="main_nav_container ml-auto">
                                 <ul class="main_nav_list">
                                     <li class="main_nav_item"><a href="#">home</a></li>
-                                    <li class="main_nav_item"><a href="about.html">about us</a></li>
-                                    <li class="main_nav_item"><a href="offers.html">offers</a></li>
-                                    <li class="main_nav_item"><a href="blog.html">news</a></li>
-                                    <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                                    <li class="main_nav_item"><a href="#">about us</a></li>
+                                    <li class="main_nav_item"><a href="#">offers</a></li>
+                                    <li class="main_nav_item"><a href="#">news</a></li>
+                                    <li class="main_nav_item"><a href="#">contact</a></li>
                                 </ul>
                             </div>
                             <div class="content_search ml-lg-0 ml-auto">
@@ -111,8 +138,26 @@
                             </form>
 
                             <div class="hamburger">
-                                <i class="fa fa-bars trans_200"></i>
+                                <i class="fas fa-bars trans_200"></i>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <nav id="navbar-scroll" class="navbar navbar-dark">
+                                <ul class="nav nav-pills">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#theme-parks">Theme Parks</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#packages">Packages</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#shows">Shows</a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -125,952 +170,1383 @@
                 <div class="menu_close_container">
                     <div class="menu_close"></div>
                 </div>
-                <div class="logo menu_logo"><a href="#"><img src="images/amusement-park.png" width="40px" alt=""></a>
+                <div class="logo menu_logo"><a href="#"><img class="lazyload" data-src="images/webp/amusement-park.webp"
+                            width="40px" alt=""></a>
                 </div>
                 <ul>
                     <li class="menu_item"><a href="#">home</a></li>
-                    <li class="menu_item"><a href="about.html">about us</a></li>
-                    <li class="menu_item"><a href="offers.html">offers</a></li>
-                    <li class="menu_item"><a href="blog.html">news</a></li>
-                    <li class="menu_item"><a href="contact.html">contact</a></li>
+                    <li class="menu_item"><a href="#">about us</a></li>
+                    <li class="menu_item"><a href="#">offers</a></li>
+                    <li class="menu_item"><a href="#">news</a></li>
+                    <li class="menu_item"><a href="#">contact</a></li>
                 </ul>
             </div>
         </div>
 
-        <!-- Home -->
+        <div id="content">
+            <!-- Home -->
 
-        <div class="home">
+            <div class="home">
 
-            <!-- Home Slider -->
+                <!-- Home Slider -->
 
-            <div class="home_slider_container">
+                <div class="home_slider_container">
 
-                <div class="owl-carousel owl-theme home_slider">
+                    <div class="owl-carousel owl-theme home_slider">
 
-                    <!-- Slider Item -->
-                    <div class="owl-item home_slider_item">
-                        <!-- Image by https://unsplash.com/@anikindimitry -->
-                        <div class="home_slider_background" style="background-image:url(images/rollercoaster2.jpg)">
-                        </div>
+                        <!-- Slider Item -->
+                        <div class="owl-item home_slider_item">
+                            <!-- Image by https://unsplash.com/@anikindimitry -->
+                            <!-- <div class="home_slider_background"
+                                data-bg="images/webp/rollercoaster2.webp">
+                            </div> -->
+                            <div class="home_slider_background lazyload" data-bg="images/webp/rollercoaster2.webp">
+                            </div>
 
-                        <div class="home_slider_content text-center">
-                            <div class="home_slider_content_inner" data-animation-in="flipInX"
-                                data-animation-out="animate-out fadeOut">
-                                <h1 class="animate__animated animate__backInDown">Zombie</h1>
-                                <h1 class="animate__animated animate__backInRight animate__delay-1s">
-                                    Ride</h1>
-                                <div class="button home_slider_button">
-                                    <div class="button_bcg"></div><a href="#">Get Your Tickets
-                                        now <i class="fa fa-ticket" aria-hidden="true"></i></a>
+
+                            <div class="home_slider_content text-center">
+                                <div class="home_slider_content_inner" data-animation-in="flipInX"
+                                    data-animation-out="animate-out fadeOut">
+                                    <h1 class="animate__animated animate__backInDown">Zombie</h1>
+                                    <h1 class="animate__animated animate__backInRight animate__delay-1s">
+                                        Ride</h1>
+                                    <div class="button home_slider_button">
+                                        <div class="button_bcg"></div><a href="#tickets">Get Your Tickets
+                                            now <i class="fa fa-ticket" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Slider Item -->
-                    <div class="owl-item home_slider_item">
-                        <div class="home_slider_background" style="background-image:url(images/rollercoastervr.jpg)">
-                        </div>
+                        <!-- Slider Item -->
+                        <div class="owl-item home_slider_item">
+                            <div class="home_slider_background lazyload" data-bg="images/webp/rollercoastervr.webp">
+                            </div>
 
-                        <div class="home_slider_content text-center">
-                            <div class="home_slider_content_inner" data-animation-in="flipInX"
-                                data-animation-out="animate-out fadeOut">
-                                <h1>Great LEGO</h1>
-                                <h1>Race</h1>
-                                <div class="button home_slider_button">
-                                    <div class="button_bcg"></div><a href="#">Get Your Tickets
-                                        now<i class="fa fa-ticket" aria-hidden="true"></i></a>
+                            <div class="home_slider_content text-center">
+                                <div class="home_slider_content_inner" data-animation-in="flipInX"
+                                    data-animation-out="animate-out fadeOut">
+                                    <h1>Great LEGO</h1>
+                                    <h1>Race</h1>
+                                    <div class="button home_slider_button">
+                                        <div class="button_bcg"></div><a href="#tickets">Get Your Tickets
+                                            now<i class="fa fa-ticket" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Slider Item -->
-                    <div class="owl-item home_slider_item">
-                        <div class="home_slider_background" style="background-image:url(images/tremors.jpg)"></div>
+                        <!-- Slider Item -->
+                        <div class="owl-item home_slider_item">
+                            <div class="home_slider_background lazyload" data-bg="images/webp/tremors.webp">
+                            </div>
 
-                        <div class="home_slider_content text-center">
-                            <div class="home_slider_content_inner" data-animation-in="flipInX"
-                                data-animation-out="animate-out fadeOut">
-                                <h1>SilverWood</h1>
-                                <h1>Coaster</h1>
-                                <div class="button home_slider_button">
-                                    <div class="button_bcg"></div><a href="#">Get Your Tickets
-                                        now<i class="fa fa-ticket" aria-hidden="true"></i></a>
+                            <div class="home_slider_content text-center">
+                                <div class="home_slider_content_inner" data-animation-in="flipInX"
+                                    data-animation-out="animate-out fadeOut">
+                                    <h1>SilverWood</h1>
+                                    <h1>Coaster</h1>
+                                    <div class="button home_slider_button">
+                                        <div class="button_bcg"></div><a href="#tickets">Get Your Tickets
+                                            now<i class="fa fa-ticket" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
-                </div>
+                    <!-- Home Slider Nav - Prev -->
+                    <div class="home_slider_nav home_slider_prev">
+                        <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="33px"
+                            viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
+                            <defs>
+                                <linearGradient id='home_grad_prev'>
+                                    <stop offset='0%' stop-color='#fa9e1b' />
+                                    <stop offset='100%' stop-color='#8d4fff' />
+                                </linearGradient>
+                            </defs>
+                            <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
+    					M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
+    					C22.545,2,26,5.541,26,9.909V23.091z" />
+                            <polygon class="nav_arrow" fill="#F3F6F9" points="15.044,22.222 16.377,20.888 12.374,16.885 16.377,12.882 15.044,11.55 9.708,16.885 11.04,18.219 
+    					11.042,18.219 " />
+                        </svg>
+                    </div>
 
-                <!-- Home Slider Nav - Prev -->
-                <div class="home_slider_nav home_slider_prev">
-                    <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="33px"
-                        viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
-                        <defs>
-                            <linearGradient id='home_grad_prev'>
-                                <stop offset='0%' stop-color='#fa9e1b' />
-                                <stop offset='100%' stop-color='#8d4fff' />
-                            </linearGradient>
-                        </defs>
-                        <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-					M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-					C22.545,2,26,5.541,26,9.909V23.091z" />
-                        <polygon class="nav_arrow" fill="#F3F6F9" points="15.044,22.222 16.377,20.888 12.374,16.885 16.377,12.882 15.044,11.55 9.708,16.885 11.04,18.219 
-					11.042,18.219 " />
-                    </svg>
-                </div>
+                    <!-- Home Slider Nav - Next -->
+                    <div class="home_slider_nav home_slider_next">
+                        <svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="33px"
+                            viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
+                            <defs>
+                                <linearGradient id='home_grad_next'>
+                                    <stop offset='0%' stop-color='#fa9e1b' />
+                                    <stop offset='100%' stop-color='#8d4fff' />
+                                </linearGradient>
+                            </defs>
+                            <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
+    				M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
+    				C22.545,2,26,5.541,26,9.909V23.091z" />
+                            <polygon class="nav_arrow" fill="#F3F6F9" points="13.044,11.551 11.71,12.885 15.714,16.888 11.71,20.891 13.044,22.224 18.379,16.888 17.048,15.554 
+    				17.046,15.554 " />
+                        </svg>
+                    </div>
 
-                <!-- Home Slider Nav - Next -->
-                <div class="home_slider_nav home_slider_next">
-                    <svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="33px"
-                        viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">
-                        <defs>
-                            <linearGradient id='home_grad_next'>
-                                <stop offset='0%' stop-color='#fa9e1b' />
-                                <stop offset='100%' stop-color='#8d4fff' />
-                            </linearGradient>
-                        </defs>
-                        <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-				M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-				C22.545,2,26,5.541,26,9.909V23.091z" />
-                        <polygon class="nav_arrow" fill="#F3F6F9" points="13.044,11.551 11.71,12.885 15.714,16.888 11.71,20.891 13.044,22.224 18.379,16.888 17.048,15.554 
-				17.046,15.554 " />
-                    </svg>
-                </div>
+                    <!-- Home Slider Dots -->
 
-                <!-- Home Slider Dots -->
+                    <div class="home_slider_dots">
+                        <ul id="home_slider_custom_dots" class="home_slider_custom_dots">
+                            <li class="home_slider_custom_dot active">
+                                <div></div>01.
+                            </li>
+                            <li class="home_slider_custom_dot">
+                                <div></div>02.
+                            </li>
+                            <li class="home_slider_custom_dot">
+                                <div></div>03.
+                            </li>
+                        </ul>
+                    </div>
 
-                <div class="home_slider_dots">
-                    <ul id="home_slider_custom_dots" class="home_slider_custom_dots">
-                        <li class="home_slider_custom_dot active">
-                            <div></div>01.
-                        </li>
-                        <li class="home_slider_custom_dot">
-                            <div></div>02.
-                        </li>
-                        <li class="home_slider_custom_dot">
-                            <div></div>03.
-                        </li>
-                    </ul>
                 </div>
 
             </div>
 
-        </div>
+            <!-- Search -->
+            <a class="anchor" id="tickets"></a>
+            <div class="search">
 
-        <!-- Search -->
+                <!-- Search Contents -->
 
-        <div class="search">
+                <div class="container fill_height">
+                    <div class="row fill_height">
+                        <div class="col fill_height">
 
-
-            <!-- Search Contents -->
-
-            <div class="container fill_height">
-                <div class="row fill_height">
-                    <div class="col fill_height">
-
-                        <!-- Search Tabs -->
-
-                        <div class="search_tabs_container">
-                            <div
-                                class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                            <!-- Search Tabs -->
+                            <div class="search_tabs_container">
                                 <div
-                                    class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start hvr-underline-from-center">
-                                    <img src="images/fair.png" width="40px" alt=""><span>Parks</span></div>
-                                <div class=" search_tab d-flex flex-row align-items-center justify-content-lg-center
-                                        justify-content-start hvr-underline-from-center">
-                                    <img src="images/travel.png" width="40px" alt="">Tours</div>
-                                <div class=" search_tab d-flex flex-row align-items-center justify-content-lg-center
-                                        justify-content-start hvr-underline-from-center">
-                                    <img src="images/bus.png" width="40px" alt="">Transportation</div>
-                                <div
-                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start hvr-underline-from-center">
-                                    <img src="images/ride.png" width="40px" alt="">Attractions</div>
-                                <div
-                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start hvr-underline-from-center">
-                                    <img src="images/stage.png" width="40px" alt="">Show</div>
-                                <div
-                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start hvr-underline-from-center">
-                                    <img src="images/play-button.png" width="40px" alt="">Videos</div>
+                                    class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                                    <div
+                                        class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start hvr-underline-from-center">
+                                        <img class="lazyload" data-src="images/webp/fair.webp" width="40px"
+                                            alt=""><span>Parks</span></div>
+                                    <div class=" search_tab d-flex flex-row align-items-center justify-content-lg-center
+                                            justify-content-start hvr-underline-from-center">
+                                        <img class="lazyload" data-src="images/webp/travel.webp" width="40px"
+                                            alt="">Tours</div>
+                                    <div class=" search_tab d-flex flex-row align-items-center justify-content-lg-center
+                                            justify-content-start hvr-underline-from-center">
+                                        <img class="lazyload" data-src="images/webp/bus.webp" width="40px"
+                                            alt="">Transportation</div>
+                                    <div
+                                        class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start hvr-underline-from-center">
+                                        <img class="lazyload" data-src="images/webp/ride.webp" width="40px"
+                                            alt="">Attractions</div>
+                                    <div
+                                        class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start hvr-underline-from-center">
+                                        <img class="lazyload" data-src="images/webp/stage.webp" width="40px"
+                                            alt="">Shows
+                                    </div>
+                                    <!-- <div
+                                        class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start hvr-underline-from-center">
+                                        <img class="lazyload" data-src="images/webp/play-button.webp" width="40px"
+                                            alt="">Videos</div> -->
+                                </div>
                             </div>
-                        </div>
+                            <script>
+                                // Tickets amount validator
+                                jQuery.validator.addMethod("greater_than_number", function (value, element,
+                                    options) {
+                                    var valid = false;
+                                    var val = $(options[1], element.form).map(function () {
+                                        return this.value;
 
-                        <!-- Search Panel -->
+                                    })
+                                    val.map(function () {
+                                        let eval = parseInt(this) > parseInt(options[0]);
+                                        valid = valid || eval;
+                                    })
+                                    return valid;
+                                }, jQuery.validator.format('select at least one of these'));
+                                // Date comparison validator
+                                jQuery.validator.addMethod("greater_than",
+                                    function (value, element, params) {
+                                        var paramDate = $('input[name=' + params + ']', element.form).val();
+                                        if (!/Invalid|NaN/.test(new Date(value))) {
+                                            return new Date(value) > new Date(paramDate);
+                                        }
+                                        return isNaN(value) && isNaN(paramDate) ||
+                                            (Number(value) > Number(paramDate));
+                                    }, jQuery.validator.format('Must be greater than {0}.'));
+                                // Date validate non past dates
+                                jQuery.validator.addMethod("greater_than_today", function (value, element, params) {
+                                    if (!/Invalid|NaN/.test(new Date(value))) {
+                                        var now = new Date();
+                                        now.setUTCHours(0, 0, 0, 0);
+                                        var date = new Date(value);
+                                        return date >= now;
+                                    }
+                                }, jQuery.validator.format('Date must not be past'));
+                                // Handle Submit
+                                function handleSubmit(e, id) {
+                                    // Convert dates to UTC
+                                    $('input[type=date]', e).map(function () {
+                                        this.type = 'text';
+                                        this.value = new Date(this.value).toISOString();
+                                        console.log(this.value);
+                                    })
+                                    $('input[type=datetime-local]', e).map(function () {
+                                        this.type = 'text';
+                                        this.value = new Date(this.value).toISOString();
+                                        console.log(this.value);
+                                    })
+                                    var userinfo = JSON.parse(localStorage.getItem(
+                                        'userinfo'));
+                                    $('#' + id + ' input[name=userid]').val(userinfo
+                                        .id);
+                                    var form = $(e).serialize();
+                                    localStorage.setItem("transaction", form);
+                                    $.post('php/redirect.php', form, function (data) {
+                                        if (!data) {
+                                            console.log("No esta sesionado");
+                                            window.location =
+                                                'login.html?redirect=confirm-purchase.html';
+                                        } else {
+                                            console.log('sesionado');
+                                            window.location =
+                                                'confirm-purchase.html';
+                                        }
+                                    });
+                                }
+                            </script>
+                            <!-- Tickets Panel -->
+                            <div class="search_panel active">
+                                <form action="#" id="search_form_1"
+                                    class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                                    <div class="search_item">
+                                        <div>Park</div>
+                                        <select name="name" class="destination search_input form-control" required>
+                                        </select>
+                                    </div>
+                                    <div class="search_item">
+                                        <div>Check-In</div>
+                                        <input type="date" class="check-in search_input form-control"
+                                            placeholder="YYYY-MM-DD" name="check_in" required>
+                                    </div>
+                                    <div class="search_item">
+                                        <div>Check-Out</div>
+                                        <input type="date" class="check-out search_input form-control"
+                                            placeholder="YYYY-MM-DD" name="check_out" required>
+                                    </div>
+                                    <div class="search_item">
+                                        <div>adults</div>
+                                        <input type="number" name="adults"
+                                            class="search_input form-control amount-group" min="0" required value="0">
+                                    </div>
+                                    <div class="search_item">
+                                        <div>children</div>
+                                        <input type="number" name="children"
+                                            class="search_input form-control amount-group" min="0" required value="0">
+                                    </div>
+                                    <input type="hidden" name="transaction" value="parks">
+                                    <input type="hidden" name="userid">
+                                    <button class="button search_button trans_200" type="submit">Buy
+                                        tickets<span></span><span></span><span></span></button>
+                                </form>
+                                <!--Get values of the form and pass them to confirm purchase page-->
+                                <script>
+                                    // Get from API
+                                    var parks = null;
+                                    if (localStorage.getItem('parks') === null) {
+                                        $.getJSON('http://localhost:3000/park-dets', function (resp) {
+                                            localStorage.setItem('parks', JSON.stringify(resp));
+                                            parks = resp;
+                                            setParks();
+                                        })
+                                    } else {
+                                        parks = JSON.parse(localStorage.getItem('parks'));
+                                        setParks();
+                                    }
 
-                        <div class="search_panel active">
-                            <form action="#" id="search_form_1"
-                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                                <div class="search_item">
-                                    <div>Park</div>
-                                    <input type="text" class="destination search_input" required="required">
-                                </div>
-                                <div class="search_item">
-                                    <div>Opening time</div>
-                                    <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>Closing time</div>
-                                    <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_1" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_1" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <button class="button search_button">Buy
-                                    tickets<span></span><span></span><span></span></button>
-                            </form>
-                        </div>
+                                    function setParks() {
+                                        parks.forEach(park => {
+                                            $('#search_form_1 div select[name=name]').append($(
+                                                    '<option></option>')
+                                                .attr('value', park.park).text(park.park));
+                                        });
+                                    }
 
-                        <!-- Search Panel -->
+                                    // Validator
+                                    $('#search_form_1').validate({
+                                        rules: {
+                                            check_in: {
+                                                required: true,
+                                                greater_than_today: true,
+                                            },
+                                            check_out: {
+                                                required: true,
+                                                greater_than: "check_in"
+                                            },
+                                            adults: {
+                                                require_from_group: [1, ".amount-group"],
+                                                greater_than_number: [0, ".amount-group"]
+                                            },
+                                            children: {
+                                                require_from_group: [1, ".amount-group"],
+                                                greater_than_number: [0, ".amount-group"]
+                                            },
+                                        },
+                                        errorElement: "div",
+                                        errorPlacement: function (error, element) {
+                                            // Add the `help-block` class to the error element
+                                            error.addClass("invalid-feedback");
 
-                        <div class="search_panel">
-                            <form action="#" id="search_form_2"
-                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                                <div class="search_item">
-                                    <div>destination</div>
-                                    <input type="text" class="destination search_input" required="required">
-                                </div>
-                                <div class="search_item">
-                                    <div>departure time</div>
-                                    <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-                                </div>
+                                            if (element.prop("type") === "checkbox") {
+                                                error.insertAfter(element.parent("label"));
+                                            } else if (element.prop("type") === "radio") {
+                                                error.insertBefore(element.parent("label"));
+                                            } else {
+                                                error.insertAfter(element);
+                                            }
+                                        },
+                                        submitHandler: function (e) {
+                                            handleSubmit(e, this.currentForm.id);
+                                            return false;
+                                        },
+                                    })
+                                </script>
+                                <!--Get values of the form and pass them to confirm purchase page-->
+                            </div>
 
-                                <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_2" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_2" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <button class="button search_button">Book
-                                    in<span></span><span></span><span></span></button>
-                            </form>
-                        </div>
+                            <!-- Search Panel -->
 
-                        <!-- Search Panel -->
+                            <div class="search_panel">
+                                <form action="#" id="search_form_2"
+                                    class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                                    <div class="search_item">
+                                        <div>destination</div>
+                                        <select name="destination" class="destination search_input form-control"
+                                            required>
+                                        </select>
+                                    </div>
+                                    <div class="search_item">
+                                        <div>day</div>
+                                        <input type="date" class="check-in search_input form-control"
+                                            placeholder="YYYY-MM-DD" name="day" required>
+                                    </div>
+                                    <div class="search_item">
+                                        <div>departure time</div>
+                                        <select name="departure" class="check_in search_input form-control">
+                                            <option value="12:00">12:00</option>
+                                            <option value="15:00">15:00</option>
+                                            <option value="16:00">16:00</option>
+                                            <option value="17:00">17:00</option>
+                                            <option value="19:00">19:00</option>
+                                            <option value="20:00">20:00</option>
+                                            <option value="21:00">21:00</option>
+                                        </select>
+                                    </div>
 
-                        <div class="search_panel">
-                            <form action="#" id="search_form_3"
-                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                                <div class="search_item">
-                                    <div>Type of transportacion</div>
-                                    <!--Autobus, avion-->
-                                    <input type="text" class="destination search_input" required="required">
-                                </div>
-                                <div class="search_item">
-                                    <div>departure time</div>
-                                    <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>arrival time</div>
-                                    <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_3" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_3" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <button class="button search_button">Book
-                                    in<span></span><span></span><span></span></button>
-                            </form>
-                        </div>
+                                    <div class="search_item">
+                                        <div>adults</div>
+                                        <input type="number" name="adults"
+                                            class="search_input form-control amount-group" min="0" required value="0">
+                                    </div>
+                                    <div class="search_item">
+                                        <div>children</div>
+                                        <input type="number" name="children"
+                                            class="search_input form-control amount-group" min="0" required value="0">
+                                    </div>
+                                    <input type="hidden" name="userid">
+                                    <input type="hidden" name="transaction" value="tours">
+                                    <button class="button search_button trans_200" type="submit">Book
+                                        in<span></span><span></span><span></span></button>
+                                </form>
+                                <!--Get values of the form and pass them to confirm purchase page-->
+                                <script>
+                                    // Get from API
+                                    var values = null;
+                                    if (localStorage.getItem('destinations') === null) {
+                                        $.getJSON('http://localhost:3000/tours-dets', function (resp) {
+                                            localStorage.setItem('destinations', JSON.stringify(resp));
+                                            values = resp;
+                                            setDestinations();
+                                        })
+                                    } else {
+                                        values = JSON.parse(localStorage.getItem('destinations'));
+                                        setDestinations();
+                                    }
 
-                        <!-- Search Panel -->
+                                    function setDestinations() {
+                                        values.forEach(value => {
+                                            $('#search_form_2 div select[name=destination]').append($(
+                                                    '<option></option>')
+                                                .attr('value', value.destination).text(value.destination));
+                                        });
+                                    }
 
-                        <div class="search_panel">
-                            <form action="#" id="search_form_4"
-                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                                <div class="search_item">
-                                    <div>Attraction name</div>
-                                    <input type="text" class="destination search_input" required="required">
-                                </div>
+                                    $('#search_form_2').validate({
+                                        rules: {
+                                            day: {
+                                                required: true,
+                                                greater_than_today: true,
+                                            },
+                                            "departure": "required",
+                                            adults: {
+                                                require_from_group: [1, ".amount-group"],
+                                                greater_than_number: [0, ".amount-group"]
+                                            },
+                                            children: {
+                                                require_from_group: [1, ".amount-group"],
+                                                greater_than_number: [0, ".amount-group"]
+                                            },
+                                        },
+                                        errorElement: "div",
+                                        errorPlacement: function (error, element) {
+                                            // Add the `help-block` class to the error element
+                                            error.addClass("invalid-feedback");
 
-                                <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_4" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_4" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <button class="button search_button">buy
-                                    tickets<span></span><span></span><span></span></button>
-                            </form>
-                        </div>
+                                            if (element.prop("type") === "checkbox") {
+                                                error.insertAfter(element.parent("label"));
+                                            } else if (element.prop("type") === "radio") {
+                                                error.insertBefore(element.parent("label"));
+                                            } else {
+                                                error.insertAfter(element);
+                                            }
+                                        },
+                                        submitHandler: function (e) {
+                                            handleSubmit(e, this.currentForm.id);
+                                            return false;
+                                        }
+                                    })
+                                </script>
+                                <!--Get values of the form and pass them to confirm purchase page-->
+                            </div>
 
-                        <!-- Search Panel -->
+                            <!-- Search Panel -->
 
-                        <div class="search_panel">
-                            <form action="#" id="search_form_5"
-                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                                <div class="search_item">
-                                    <div>Show</div>
-                                    <input type="text" class="destination search_input" required="required">
-                                </div>
-                                <div class="search_item">
-                                    <div>Day</div>
-                                    <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>Horary</div>
-                                    <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_5" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_5" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <button class="button search_button">buy
-                                    tickets<span></span><span></span><span></span></button>
-                            </form>
-                        </div>
+                            <div class="search_panel">
+                                <form action="#" id="search_form_3"
+                                    class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                                    <div class="search_item">
+                                        <div>Type of transport</div>
+                                        <select name="transport" class="destination search_input form-control" required>
+                                        </select>
+                                    </div>
+                                    <div class="search_item">
+                                        <div>departure time</div>
+                                        <input type="datetime-local" class="check_in search_input form-control"
+                                            placeholder="YYYY-MM-DD" name="departure">
+                                    </div>
+                                    <div class="search_item">
+                                        <div>arrival time</div>
+                                        <input type="datetime-local" class="check_out search_input form-control"
+                                            placeholder="YYYY-MM-DD" name="arrival">
+                                    </div>
+                                    <div class="search_item">
+                                        <div>adults</div>
+                                        <input type="number" name="adults"
+                                            class="search_input form-control amount-group" min="0" required value="0">
+                                    </div>
+                                    <div class="search_item">
+                                        <div>children</div>
+                                        <input type="number" name="children"
+                                            class="search_input form-control amount-group" min="0" required value="0">
+                                    </div>
+                                    <input type="hidden" name="userid">
+                                    <input type="hidden" name="transaction" value="transport">
+                                    <button class="button search_button" type="submit">Book
+                                        in<span></span><span></span><span></span></button>
+                                </form>
+                                <!--Get values of the form and pass them to confirm purchase page-->
+                                <script>
+                                    // Get from API
+                                    var values = null;
+                                    if (localStorage.getItem('transports') === null) {
+                                        $.getJSON('http://localhost:3000/transport-dets', function (resp) {
+                                            localStorage.setItem('transports', JSON.stringify(resp));
+                                            values = resp;
+                                            setTransports();
+                                        })
+                                    } else {
+                                        values = JSON.parse(localStorage.getItem('transports'));
+                                        setTransports();
+                                    }
 
-                        <!-- Search Panel -->
+                                    function setTransports() {
+                                        values.forEach(value => {
+                                            $('#search_form_3 div select[name=transport]').append($(
+                                                    '<option></option>')
+                                                .attr('value', value.name).text(value.name));
+                                        });
+                                    }
+                                    $('#search_form_3').validate({
+                                        rules: {
+                                            departure: {
+                                                required: true,
+                                                greater_than_today: true
+                                            },
+                                            arrival: {
+                                                required: true,
+                                                greater_than: "departure"
+                                            },
+                                            adults: {
+                                                require_from_group: [1, ".amount-group"],
+                                                greater_than_number: [0, ".amount-group"]
+                                            },
+                                            children: {
+                                                require_from_group: [1, ".amount-group"],
+                                                greater_than_number: [0, ".amount-group"]
+                                            },
+                                        },
+                                        errorElement: "div",
+                                        errorPlacement: function (error, element) {
+                                            // Add the `help-block` class to the error element
+                                            error.addClass("invalid-feedback");
 
-                        <div class="search_panel">
-                            <form action="#" id="search_form_6"
-                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                                <div class="search_item">
-                                    <div>Attraction/Show</div>
-                                    <input type="text" class="destination search_input" required="required">
-                                </div>
+                                            if (element.prop("type") === "checkbox") {
+                                                error.insertAfter(element.parent("label"));
+                                            } else if (element.prop("type") === "radio") {
+                                                error.insertBefore(element.parent("label"));
+                                            } else {
+                                                error.insertAfter(element);
+                                            }
+                                        },
+                                        submitHandler: function (e) {
+                                            handleSubmit(e, this.currentForm.id);
+                                            return false;
+                                        }
+                                    })
+                                </script>
+                                <!--Get values of the form and pass them to confirm purchase page-->
+                            </div>
 
-                                <button
-                                    class="button search_button">search<span></span><span></span><span></span></button>
-                            </form>
+                            <!-- Search Panel -->
+
+                            <div class="search_panel">
+                                <form action="#" id="search_form_4"
+                                    class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+
+                                    <div class="search_item">
+                                        <div>Attraction name</div>
+                                        <select class="destination search_input form-control" required name="name">
+                                        </select>
+                                    </div>
+                                    <div class="search_item">
+                                        <div>adults</div>
+                                        <input type="number" name="adults"
+                                            class="search_input form-control amount-group" min="0" required value="0">
+                                    </div>
+                                    <div class="search_item">
+                                        <div>children</div>
+                                        <input type="number" name="children"
+                                            class="search_input form-control amount-group" min="0" required value="0">
+                                    </div>
+                                    <input type="hidden" name="userid">
+                                    <input type="hidden" name="transaction" value="attractions">
+                                    <button class="button search_button">buy
+                                        tickets<span></span><span></span><span></span></button>
+                                </form>
+                                <!--Get values of the form and pass them to confirm purchase page-->
+                                <script>
+                                    // Get from API
+                                    var values = null;
+                                    if (localStorage.getItem('attractions') === null) {
+                                        $.getJSON('http://localhost:3000/attractions-dets', function (resp) {
+                                            localStorage.setItem('attractions', JSON.stringify(resp));
+                                            values = resp;
+                                            setAttractions();
+                                        })
+                                    } else {
+                                        values = JSON.parse(localStorage.getItem('attractions'));
+                                        setAttractions();
+                                    }
+
+                                    function setAttractions() {
+                                        values.forEach(value => {
+                                            $('#search_form_4 div select[name=name]').append($(
+                                                    '<option></option>')
+                                                .attr('value', value.attraction).text(value.attraction));
+                                        });
+                                    }
+
+                                    $('#search_form_4').validate({
+                                        rules: {
+                                            "name": "required",
+                                            adults: {
+                                                require_from_group: [1, ".amount-group"],
+                                                greater_than_number: [0, ".amount-group"]
+                                            },
+                                            children: {
+                                                require_from_group: [1, ".amount-group"],
+                                                greater_than_number: [0, ".amount-group"]
+                                            },
+                                        },
+                                        errorElement: "div",
+                                        errorPlacement: function (error, element) {
+                                            // Add the `help-block` class to the error element
+                                            error.addClass("invalid-feedback");
+
+                                            if (element.prop("type") === "checkbox") {
+                                                error.insertAfter(element.parent("label"));
+                                            } else if (element.prop("type") === "radio") {
+                                                error.insertBefore(element.parent("label"));
+                                            } else {
+                                                error.insertAfter(element);
+                                            }
+                                        },
+                                        submitHandler: function (e) {
+                                            handleSubmit(e, this.currentForm.id);
+                                            return false;
+                                        }
+                                    })
+                                </script>
+                                <!--Get values of the form and pass them to confirm purchase page-->
+                            </div>
+
+                            <!-- Search Panel -->
+
+                            <div class="search_panel">
+                                <form action="#" id="search_form_5"
+                                    class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                                    <div class="search_item">
+                                        <div>Show</div>
+                                        <select class="destination search_input form-control" required="required"
+                                            name="showname">
+                                        </select>
+                                    </div>
+                                    <div class="search_item">
+                                        <div>Day</div>
+                                        <input type="date" name="day" class="check_in search_input form-control"
+                                            placeholder="
+                                            YYYY-MM-DD">
+                                    </div>
+                                    <div class="search_item">
+                                        <div>Schedule</div>
+                                        <select class="check_out search_input form-control" name="schedule">
+                                            <option value="12:00">12:00</option>
+                                            <option value="15:00">15:00</option>
+                                            <option value="16:00">16:00</option>
+                                            <option value="17:00">17:00</option>
+                                            <option value="19:00">19:00</option>
+                                            <option value="20:00">20:00</option>
+                                            <option value="21:00">21:00</option>
+                                        </select>
+                                    </div>
+                                    <div class="search_item">
+                                        <div>adults</div>
+                                        <input type="number" name="adults"
+                                            class="search_input form-control amount-group" min="0" required value="0">
+                                    </div>
+                                    <div class="search_item">
+                                        <div>children</div>
+                                        <input type="number" name="children"
+                                            class="search_input form-control amount-group" min="0" required value="0">
+                                    </div>
+                                    <input type="hidden" name="userid">
+                                    <input type="hidden" name="transaction" value="shows">
+                                    <button class="button search_button" type="submit">buy
+                                        tickets<span></span><span></span><span></span></button>
+                                </form>
+                                <!--Get values of the form and pass them to confirm purchase page-->
+                                <script>
+                                    // Get from API
+                                    var values = null;
+                                    if (localStorage.getItem('shows') === null) {
+                                        $.getJSON('http://localhost:3000/shows-dets', function (resp) {
+                                            localStorage.setItem('shows', JSON.stringify(resp));
+                                            values = resp;
+                                            setShows();
+                                        })
+                                    } else {
+                                        values = JSON.parse(localStorage.getItem('shows'));
+                                        setShows();
+                                    }
+
+                                    function setShows() {
+                                        values.forEach(value => {
+                                            $('#search_form_5 div select[name=showname]').append($(
+                                                    '<option></option>')
+                                                .attr('value', value.showname).text(value.showname));
+                                        });
+                                    }
+
+                                    $('#search_form_5').validate({
+                                        rules: {
+                                            "name": "required",
+                                            day: {
+                                                required: true,
+                                                greater_than_today: true
+                                            },
+                                            adults: {
+                                                require_from_group: [1, ".amount-group"],
+                                                greater_than_number: [0, ".amount-group"]
+                                            },
+                                            children: {
+                                                require_from_group: [1, ".amount-group"],
+                                                greater_than_number: [0, ".amount-group"]
+                                            },
+                                        },
+                                        errorElement: "div",
+                                        errorPlacement: function (error, element) {
+                                            // Add the `help-block` class to the error element
+                                            error.addClass("invalid-feedback");
+
+                                            if (element.prop("type") === "checkbox") {
+                                                error.insertAfter(element.parent("label"));
+                                            } else if (element.prop("type") === "radio") {
+                                                error.insertBefore(element.parent("label"));
+                                            } else {
+                                                error.insertAfter(element);
+                                            }
+                                        },
+                                        submitHandler: function (e) {
+                                            handleSubmit(e, this.currentForm.id);
+                                            return false;
+                                        }
+                                    })
+                                </script>
+                                <!--Get values of the form and pass them to confirm purchase page-->
+                            </div>
+
+                            <!-- Search Panel -->
+
+                            <div class="search_panel">
+                                <form action="#" id="search_form_6"
+                                    class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                                    <div class="search_item">
+                                        <div>Attraction/Show</div>
+                                        <input type="text" class="destination search_input" required="required">
+                                    </div>
+
+                                    <button
+                                        class="button search_button">search<span></span><span></span><span></span></button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Intro -->
+            <!-- Intro -->
 
-        <div class="intro">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <h2 class="intro_title text-center">We have the best theme parks</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-10 offset-lg-1">
-                        <div class="intro_text text-center animate_magictext">
-                            <p>Enjoy a fun-filled trip with Magic Sans! There are always new places with magic! </p>
+            <div class="intro">
+                <div class="container">
+                    <div class="row anchor-large" id="theme-parks">
+                        <div class="col">
+                            <h2 class="intro_title text-center">We have the best theme parks</h2>
                         </div>
                     </div>
-                </div>
-                <div class="row intro_items">
-
-                    <!-- Intro Item -->
-
-                    <div class="col-lg-4 intro_col">
-                        <div class="intro_item">
-                            <div class="intro_item_overlay"></div>
-                            <!-- Image by https://unsplash.com/@dnevozhai -->
-                            <div class="intro_item_background" style="background-image:url(images/ap1.jpg)"></div>
-                            <div
-                                class="intro_item_content d-flex flex-column align-items-center justify-content-center">
-                                <div class="intro_date">New Jersey, USA</div>
-                                <div class="button intro_button">
-                                    <div class="button_bcg"></div><a href="#">see
-                                        more<span></span><span></span><span></span></a>
-                                </div>
-                                <div class="intro_center text-center">
-                                    <h1 id="fableworld" class="fableworld">Fableworld</h1>
-                                    <div class="intro_price">From $70</div>
-                                    <div class="rating rating_4">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-lg-10 offset-lg-1">
+                            <div class="intro_text text-center animate_magictext">
+                                <p>Enjoy a fun-filled trip with Magic Sans! There are always new places with magic! </p>
                             </div>
                         </div>
                     </div>
+                    <div class="row intro_items">
 
-                    <!-- Intro Item -->
+                        <!-- Intro Item -->
 
-                    <div class="col-lg-4 intro_col">
-                        <div class="intro_item">
-                            <div class="intro_item_overlay"></div>
-                            <!-- Image by https://unsplash.com/@hellolightbulb -->
-                            <div class="intro_item_background" style="background-image:url(images/ap2.jpg)"></div>
-                            <div
-                                class="intro_item_content d-flex flex-column align-items-center justify-content-center">
-                                <div class="intro_date">Berlin, Germany</div>
-                                <div class="button intro_button">
-                                    <div class="button_bcg"></div><a href="#">see
-                                        more<span></span><span></span><span></span></a>
+                        <div class="col-lg-4 intro_col">
+                            <div class="intro_item">
+                                <div class="intro_item_overlay"></div>
+                                <!-- Image by https://unsplash.com/@dnevozhai -->
+                                <div class="intro_item_background lazyload" data-bg="images/webp/ap1.webp">
                                 </div>
-                                <div class="intro_center text-center">
-                                    <h1 class="herorealm">HEROREALM</h1>
-                                    <div class="intro_price">From $60</div>
-                                    <div class="rating rating_4">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Intro Item -->
-
-                    <div class="col-lg-4 intro_col">
-                        <div class="intro_item">
-                            <div class="intro_item_overlay"></div>
-                            <!-- Image by https://unsplash.com/@willianjusten -->
-                            <div class="intro_item_background" style="background-image:url(images/ap3.jpg)"></div>
-                            <div
-                                class="intro_item_content d-flex flex-column align-items-center justify-content-center">
-                                <div class="intro_date">Scotland, UK</div>
-                                <div class="button intro_button">
-                                    <div class="button_bcg"></div><a href="#">see
-                                        more<span></span><span></span><span></span></a>
-                                </div>
-                                <div class="intro_center text-center">
-                                    <h1 class="emberpark">Emberpark</h1>
-                                    <div class="intro_price">From $55</div>
-                                    <div class="rating rating_4">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA -->
-
-        <div class="cta">
-            <!-- Image by https://unsplash.com/@thanni -->
-            <div class="cta_background" style="background-image:url(images/ap4.jpg)"></div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-
-                        <!-- CTA Slider -->
-
-                        <div class="cta_slider_container">
-                            <div class="owl-carousel owl-theme cta_slider">
-
-                                <!-- CTA Slider Item -->
-                                <div class="owl-item cta_item text-center">
-                                    <div class="cta_title">All inclusive packages</div>
-
-                                    <p class="cta_text">Learn about our promotions and packages
-                                        with incredible discounts that can include VIP tickets to parks and attractions,
-                                        meals, transportacion,lodging and much more!</p>
-                                    <div class="button cta_button">
-                                        <div class="button_bcg"></div><a href="#">See more
-                                            <span></span><span></span><span></span></a>
-                                    </div>
-                                </div>
-
-                                <!-- CTA Slider Item -->
-                                <div class="owl-item cta_item text-center">
-                                    <div class="cta_title">Season discounts</div>
-
-                                    <p class="cta_text">Take advantage of our seasonal discounts! <br />Do not miss up
-                                        to 40%
-                                        discount to enjoy on your next trip!</p>
-                                    <div class="button cta_button">
-                                        <div class="button_bcg"></div><a href="#">See
+                                <div
+                                    class="intro_item_content d-flex flex-column align-items-center justify-content-center">
+                                    <div class="intro_date">New Jersey, USA</div>
+                                    <div class="button intro_button">
+                                        <div class="button_bcg"></div><a href="#">see
                                             more<span></span><span></span><span></span></a>
                                     </div>
-                                </div>
-
-                                <!-- CTA Slider Item -->
-                                <div class="owl-item cta_item text-center">
-                                    <div class="cta_title">Get ready for new adventures</div>
-
-                                    <p class="cta_text">5 new parks coming soon to test your bravery!</p>
-                                    <div class="button cta_button">
-                                        <div class="button_bcg"></div><a href="#">Coming
-                                            soon<span></span><span></span><span></span></a>
+                                    <div class="intro_center text-center">
+                                        <h1 id="fableworld" class="fableworld">Fableworld</h1>
+                                        <div class="intro_price">From $70</div>
+                                        <div class="rating rating_4">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
+                        </div>
 
-                            <!-- CTA Slider Nav - Prev -->
-                            <div class="cta_slider_nav cta_slider_prev">
-                                <svg version="1.1" id="Layer_4" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px"
-                                    height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
-                                    xml:space="preserve">
-                                    <defs>
-                                        <linearGradient id='cta_grad_prev'>
-                                            <stop offset='0%' stop-color='#fa9e1b' />
-                                            <stop offset='100%' stop-color='#8d4fff' />
-                                        </linearGradient>
-                                    </defs>
-                                    <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-								M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-								C22.545,2,26,5.541,26,9.909V23.091z" />
-                                    <polygon class="nav_arrow" fill="#F3F6F9" points="15.044,22.222 16.377,20.888 12.374,16.885 16.377,12.882 15.044,11.55 9.708,16.885 11.04,18.219 
-								11.042,18.219 " />
-                                </svg>
+                        <!-- Intro Item -->
+
+                        <div class="col-lg-4 intro_col">
+                            <div class="intro_item">
+                                <div class="intro_item_overlay"></div>
+                                <!-- Image by https://unsplash.com/@hellolightbulb -->
+                                <div class="intro_item_background lazyload" data-bg="images/webp/ap2.webp">
+                                </div>
+                                <div
+                                    class="intro_item_content d-flex flex-column align-items-center justify-content-center">
+                                    <div class="intro_date">Berlin, Germany</div>
+                                    <div class="button intro_button">
+                                        <div class="button_bcg"></div><a href="#">see
+                                            more<span></span><span></span><span></span></a>
+                                    </div>
+                                    <div class="intro_center text-center">
+                                        <h1 class="herorealm">HEROREALM</h1>
+                                        <div class="intro_price">From $60</div>
+                                        <div class="rating rating_4">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
 
-                            <!-- CTA Slider Nav - Next -->
-                            <div class="cta_slider_nav cta_slider_next">
-                                <svg version="1.1" id="Layer_5" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px"
-                                    height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
-                                    xml:space="preserve">
-                                    <defs>
-                                        <linearGradient id='cta_grad_next'>
-                                            <stop offset='0%' stop-color='#fa9e1b' />
-                                            <stop offset='100%' stop-color='#8d4fff' />
-                                        </linearGradient>
-                                    </defs>
-                                    <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-							M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-							C22.545,2,26,5.541,26,9.909V23.091z" />
-                                    <polygon class="nav_arrow" fill="#F3F6F9" points="13.044,11.551 11.71,12.885 15.714,16.888 11.71,20.891 13.044,22.224 18.379,16.888 17.048,15.554 
-							17.046,15.554 " />
-                                </svg>
+                        <!-- Intro Item -->
+
+                        <div class="col-lg-4 intro_col">
+                            <div class="intro_item">
+                                <div class="intro_item_overlay"></div>
+                                <!-- Image by https://unsplash.com/@willianjusten -->
+                                <div class="intro_item_background lazyload" data-bg="images/webp/ap3.webp">
+                                </div>
+                                <div
+                                    class="intro_item_content d-flex flex-column align-items-center justify-content-center">
+                                    <div class="intro_date">Scotland, UK</div>
+                                    <div class="button intro_button">
+                                        <div class="button_bcg"></div><a href="#">see
+                                            more<span></span><span></span><span></span></a>
+                                    </div>
+                                    <div class="intro_center text-center">
+                                        <h1 class="emberpark">Emberpark</h1>
+                                        <div class="intro_price">From $55</div>
+                                        <div class="rating rating_4">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
 
                     </div>
                 </div>
             </div>
 
-        </div>
+            <!-- CTA -->
 
-        <!-- Offers -->
+            <div class="cta">
+                <!-- Image by https://unsplash.com/@thanni -->
+                <div class="cta_background lazyload" data-bg="images/webp/ap4.webp"></div>
 
-        <div class="offers">
-            <div class="container">
-                <div class="row">
-                    <div class="col text-center">
-                        <h2 class="section_title">the best shows</h2>
+                <div class="container" id="packages">
+                    <div class="row">
+                        <div class="col">
+
+                            <!-- CTA Slider -->
+
+                            <div class="cta_slider_container">
+                                <div class="owl-carousel owl-theme cta_slider">
+
+                                    <!-- CTA Slider Item -->
+                                    <div class="owl-item cta_item text-center">
+                                        <div class="cta_title">All inclusive packages</div>
+
+                                        <p class="cta_text">Learn about our promotions and packages
+                                            with incredible discounts that can include VIP tickets to parks and
+                                            attractions,
+                                            meals, transportacion,lodging and much more!</p>
+                                        <div class="button cta_button">
+                                            <div class="button_bcg"></div><a href="#">See more
+                                                <span></span><span></span><span></span></a>
+                                        </div>
+                                    </div>
+
+                                    <!-- CTA Slider Item -->
+                                    <div class="owl-item cta_item text-center">
+                                        <div class="cta_title">Season discounts</div>
+
+                                        <p class="cta_text">Take advantage of our seasonal discounts! <br />Do not miss
+                                            up
+                                            to 40%
+                                            discount to enjoy on your next trip!</p>
+                                        <div class="button cta_button">
+                                            <div class="button_bcg"></div><a href="#">See
+                                                more<span></span><span></span><span></span></a>
+                                        </div>
+                                    </div>
+
+                                    <!-- CTA Slider Item -->
+                                    <div class="owl-item cta_item text-center">
+                                        <div class="cta_title">Get ready for new adventures</div>
+
+                                        <p class="cta_text">5 new parks coming soon to test your bravery!</p>
+                                        <div class="button cta_button">
+                                            <div class="button_bcg"></div><a href="#">Coming
+                                                soon<span></span><span></span><span></span></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- CTA Slider Nav - Prev -->
+                                <div class="cta_slider_nav cta_slider_prev">
+                                    <svg version="1.1" id="Layer_4" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px"
+                                        height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
+                                        xml:space="preserve">
+                                        <defs>
+                                            <linearGradient id='cta_grad_prev'>
+                                                <stop offset='0%' stop-color='#fa9e1b' />
+                                                <stop offset='100%' stop-color='#8d4fff' />
+                                            </linearGradient>
+                                        </defs>
+                                        <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
+    								M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
+    								C22.545,2,26,5.541,26,9.909V23.091z" />
+                                        <polygon class="nav_arrow" fill="#F3F6F9" points="15.044,22.222 16.377,20.888 12.374,16.885 16.377,12.882 15.044,11.55 9.708,16.885 11.04,18.219 
+    								11.042,18.219 " />
+                                    </svg>
+                                </div>
+
+                                <!-- CTA Slider Nav - Next -->
+                                <div class="cta_slider_nav cta_slider_next">
+                                    <svg version="1.1" id="Layer_5" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px"
+                                        height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
+                                        xml:space="preserve">
+                                        <defs>
+                                            <linearGradient id='cta_grad_next'>
+                                                <stop offset='0%' stop-color='#fa9e1b' />
+                                                <stop offset='100%' stop-color='#8d4fff' />
+                                            </linearGradient>
+                                        </defs>
+                                        <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
+    							M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
+    							C22.545,2,26,5.541,26,9.909V23.091z" />
+                                        <polygon class="nav_arrow" fill="#F3F6F9" points="13.044,11.551 11.71,12.885 15.714,16.888 11.71,20.891 13.044,22.224 18.379,16.888 17.048,15.554 
+    							17.046,15.554 " />
+                                    </svg>
+                                </div>
+
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                <div class="row offers_items">
 
-                    <!-- Offers Item -->
-                    <div class="col-lg-6 offers_col">
-                        <div class="offers_item">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="offers_image_container">
-                                        <!-- Image by https://unsplash.com/@kensuarez -->
-                                        <div class="offers_image_background"
-                                            style="background-image:url(images/franco.png)"></div>
-                                        <div class="offer_name"><a href="#">Franco Show</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="offers_content">
-                                        <div class="offers_price">$70<span>per person</span></div>
-                                        <div class="rating_r rating_r_5 offers_rating">
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
+            </div>
+
+            <!-- Offers -->
+
+            <div class="offers">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h2 class="section_title" id="shows">the best shows</h2>
+                        </div>
+                    </div>
+                    <div class="row offers_items">
+
+                        <!-- Offers Item -->
+                        <div class="col-lg-6 offers_col">
+                            <div class="offers_item">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="offers_image_container">
+                                            <!-- Image by https://unsplash.com/@kensuarez -->
+                                            <div class="offers_image_background lazyload"
+                                                data-bg="images/webp/franco.webp">
+                                            </div>
+                                            <div class="offer_name"><a href="#">Franco Show</a></div>
                                         </div>
-                                        <p class="offers_text">Franco Escamilla is a stand up comedian, he is known as
-                                            the master of sarcasm
-                                            for the way he tells his jokes and anecdotes. Currently Franco is the most
-                                            important comedian in
-                                            all of Latin America. An event for all ages.</p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="offers_content">
+                                            <div class="offers_price">$70<span>per person</span></div>
+                                            <div class="rating_r rating_r_5 offers_rating">
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                            </div>
+                                            <p class="offers_text">Franco Escamilla is a stand up comedian, he is known
+                                                as
+                                                the master of sarcasm
+                                                for the way he tells his jokes and anecdotes. Currently Franco is the
+                                                most
+                                                important comedian in
+                                                all of Latin America. An event for all ages.</p>
 
-                                        <div class="offers_link"><a href="offers.html">read more</a></div>
+                                            <div class="offers_link"><a href="offers.html">read more</a></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Offers Item -->
-                    <div class="col-lg-6 offers_col">
-                        <div class="offers_item">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="offers_image_container">
-                                        <!-- Image by Egzon Bytyqi -->
-                                        <div class="offers_image_background"
-                                            style="background-image:url(images/offer_2.jpg)"></div>
-                                        <div class="offer_name"><a href="#">turkey hills</a></div>
+                        <!-- Offers Item -->
+                        <div class="col-lg-6 offers_col">
+                            <div class="offers_item">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="offers_image_container">
+                                            <!-- Image by Egzon Bytyqi -->
+                                            <div class="offers_image_background lazyload"
+                                                data-bg="images/webp/offer_2.webp">
+                                            </div>
+                                            <div class="offer_name"><a href="#">turkey hills</a></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="offers_content">
-                                        <div class="offers_price">$50<span>per person</span></div>
-                                        <div class="rating_r rating_r_4 offers_rating">
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
+                                    <div class="col-lg-6">
+                                        <div class="offers_content">
+                                            <div class="offers_price">$50<span>per person</span></div>
+                                            <div class="rating_r rating_r_4 offers_rating">
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                            </div>
+                                            <p class="offers_text">Have a great day flying over 150ft on the air
+                                                enjoy the fantastic views and share this unique experience
+                                                with family and friends from all ages. Get your tickets now</p>
+                                            <div class="offers_icons">
+                                                <ul class="offers_icons_list">
+                                                    <li class="offers_icons_item"><img class="lazyload"
+                                                            data-src="images/webp/post.webp" alt="">
+                                                    </li>
+                                                    <li class="offers_icons_item"><img class="lazyload"
+                                                            data-src="images/webp/compass.webp" alt="">
+                                                    </li>
+                                                    <li class="offers_icons_item"><img class="lazyload"
+                                                            data-src="images/webp/bicycle.webp" alt="">
+                                                    </li>
+                                                    <li class="offers_icons_item"><img class="lazyload"
+                                                            data-src="images/webp/sailboat.webp" alt="">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="offers_link"><a href="offers.html">read more</a></div>
                                         </div>
-                                        <p class="offers_text">Have a great day flying over 150ft on the air
-                                            enjoy the fantastic views and share this unique experience
-                                            with family and friends from all ages. Get your tickets now</p>
-                                        <div class="offers_icons">
-                                            <ul class="offers_icons_list">
-                                                <li class="offers_icons_item"><img src="images/post.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/sailboat.png" alt="">
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="offers_link"><a href="offers.html">read more</a></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Offers Item -->
-                    <div class="col-lg-6 offers_col">
-                        <div class="offers_item">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="offers_image_container">
-                                        <!-- Image by https://unsplash.com/@nevenkrcmarek -->
-                                        <div class="offers_image_background"
-                                            style="background-image:url(images/ilu.jpg)"></div>
-                                        <div class="offer_name"><a href="#">The Illusionists</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="offers_content">
-                                        <div class="offers_price">$90<span>per person</span></div>
-                                        <div class="rating_r rating_r_4 offers_rating">
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
+                        <!-- Offers Item -->
+                        <div class="col-lg-6 offers_col">
+                            <div class="offers_item">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="offers_image_container">
+                                            <!-- Image by https://unsplash.com/@nevenkrcmarek -->
+                                            <div class="offers_image_background lazyload"
+                                                data-bg="images/webp/ilu.webp"></div>
+                                            <div class="offer_name"><a href="#">The Illusionists</a></div>
                                         </div>
-                                        <p class="offers_text">The show holds the record for highest sales recorded in
-                                            one week in six of the most important venues around the world</p>
-                                        <div class="offers_icons">
-                                            <ul class="offers_icons_list">
-                                                <li class="offers_icons_item"><i class="fa fa-magic"
-                                                        aria-hidden="true"></i>
-                                                </li>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="offers_content">
+                                            <div class="offers_price">$90<span>per person</span></div>
+                                            <div class="rating_r rating_r_4 offers_rating">
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                            </div>
+                                            <p class="offers_text">The show holds the record for highest sales recorded
+                                                in
+                                                one week in six of the most important venues around the world</p>
+                                            <div class="offers_icons">
+                                                <ul class="offers_icons_list">
+                                                    <li class="offers_icons_item"><i class="fa fa-magic"
+                                                            aria-hidden="true"></i>
+                                                    </li>
 
-                                            </ul>
+                                                </ul>
+                                            </div>
+                                            <div class="offers_link"><a href="offers.html">read more</a></div>
                                         </div>
-                                        <div class="offers_link"><a href="offers.html">read more</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Offers Item -->
-                    <div class="col-lg-6 offers_col">
-                        <div class="offers_item">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="offers_image_container">
-                                        <!-- Image by https://unsplash.com/@mantashesthaven -->
-                                        <div class="offers_image_background"
-                                            style="background-image:url(images/mar.jpg)"></div>
-                                        <div class="offer_name"><a href="#">VIVID</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="offers_content">
-                                        <div class="offers_price">$30<span>per person</span></div>
-                                        <div class="rating_r rating_r_4 offers_rating">
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                        </div>
-                                        <p class="offers_text">Who can you be? What’s your true ID? VIVID is a
-                                            hypersensuous journey of self-discovery and a declaration of love to life.
-                                        </p>
-                                        <div class="offers_icons">
-                                            <ul class="offers_icons_list">
-                                                <li class="offers_icons_item"><img src="images/post.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
-                                                <li class="offers_icons_item"><img src="images/sailboat.png" alt="">
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="offers_link"><a href="offers.html">read more</a></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                        <!-- Offers Item -->
+                        <div class="col-lg-6 offers_col">
+                            <div class="offers_item">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="offers_image_container">
+                                            <!-- Image by https://unsplash.com/@mantashesthaven -->
+                                            <div class="offers_image_background lazyload"
+                                                data-bg="images/webp/mar.webp"></div>
+                                            <div class="offer_name"><a href="#">VIVID</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="offers_content">
+                                            <div class="offers_price">$30<span>per person</span></div>
+                                            <div class="rating_r rating_r_4 offers_rating">
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                            </div>
+                                            <p class="offers_text">Who can you be? What’s your true ID? VIVID is a
+                                                hypersensuous journey of self-discovery and a declaration of love to
+                                                life.
+                                            </p>
+                                            <div class="offers_icons">
+                                                <ul class="offers_icons_list">
+                                                    <li class="offers_icons_item"><img class="lazyload"
+                                                            data-src="images/webp/post.webp" alt="">
+                                                    </li>
+                                                    <li class="offers_icons_item"><img class="lazyload"
+                                                            data-src="images/webp/compass.webp" alt="">
+                                                    </li>
+                                                    <li class="offers_icons_item"><img class="lazyload"
+                                                            data-src="images/webp/bicycle.webp" alt="">
+                                                    </li>
+                                                    <li class="offers_icons_item"><img class="lazyload"
+                                                            data-src="images/webp/sailboat.webp" alt="">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="offers_link"><a href="offers.html">read more</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Testimonials -->
+            <!-- Testimonials -->
 
-        <div class="testimonials">
-            <div class="test_border"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col text-center">
-                        <h2 class="section_title">what our clients say about us</h2>
+            <div class="testimonials">
+                <div class="test_border"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h2 class="section_title">what our clients say about us</h2>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
+                    <div class="row">
+                        <div class="col">
 
-                        <!-- Testimonials Slider -->
+                            <!-- Testimonials Slider -->
 
-                        <div class="test_slider_container">
-                            <div class="owl-carousel owl-theme test_slider">
+                            <div class="test_slider_container">
+                                <div class="owl-carousel owl-theme test_slider">
 
-                                <!-- Testimonial Item -->
-                                <div class="owl-item">
-                                    <div class="test_item">
-                                        <div class="test_image"><img src="images/test_1.jpg"
-                                                alt="https://unsplash.com/@anniegray"></div>
-                                        <div class="test_icon"><img src="images/backpack.png" alt=""></div>
-                                        <div class="test_content_container">
-                                            <div class="test_content">
-                                                <div class="test_item_info">
-                                                    <div class="test_name">Carla smith</div>
-                                                    <div class="test_date">May 24, 2017</div>
+                                    <!-- Testimonial Item -->
+                                    <div class="owl-item">
+                                        <div class="test_item">
+                                            <div class="test_image lazyload"><img class="lazyload"
+                                                    data-src="images/webp/test_1.webp"
+                                                    alt="https://unsplash.com/@anniegray"></div>
+                                            <div class="test_icon"><img class="lazyload"
+                                                    data-src="images/webp/backpack.webp" alt=""></div>
+                                            <div class="test_content_container">
+                                                <div class="test_content">
+                                                    <div class="test_item_info">
+                                                        <div class="test_name">Carla smith</div>
+                                                        <div class="test_date">May 24, 2017</div>
+                                                    </div>
+                                                    <div class="test_quote_title">" Best holliday ever "</div>
+                                                    <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse
+                                                        potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.
+                                                    </p>
                                                 </div>
-                                                <div class="test_quote_title">" Best holliday ever "</div>
-                                                <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse
-                                                    potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Testimonial Item -->
-                                <div class="owl-item">
-                                    <div class="test_item">
-                                        <div class="test_image"><img src="images/test_2.jpg"
-                                                alt="https://unsplash.com/@tschax"></div>
-                                        <div class="test_icon"><img src="images/island_t.png" alt=""></div>
-                                        <div class="test_content_container">
-                                            <div class="test_content">
-                                                <div class="test_item_info">
-                                                    <div class="test_name">Selena Borks</div>
-                                                    <div class="test_date">June 02, 2019</div>
+                                    <!-- Testimonial Item -->
+                                    <div class="owl-item">
+                                        <div class="test_item">
+                                            <div class="test_image lazyload"><img class="lazyload"
+                                                    data-src="images/webp/test_2.webp"
+                                                    alt="https://unsplash.com/@tschax"></div>
+                                            <div class="test_icon"><img class="lazyload"
+                                                    data-src="images/webp/island_t.webp" alt=""></div>
+                                            <div class="test_content_container">
+                                                <div class="test_content">
+                                                    <div class="test_item_info">
+                                                        <div class="test_name">Selena Borks</div>
+                                                        <div class="test_date">June 02, 2019</div>
+                                                    </div>
+                                                    <div class="test_quote_title">" Every vacation is a new adventure "
+                                                    </div>
+                                                    <p class="test_quote_text">Every time I look for a new adventure I
+                                                        come
+                                                        here and always find just what I need.</p>
                                                 </div>
-                                                <div class="test_quote_title">" Every vacation is a new adventure "
-                                                </div>
-                                                <p class="test_quote_text">Every time I look for a new adventure I come
-                                                    here and always find just what I need.</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Testimonial Item -->
-                                <div class="owl-item">
-                                    <div class="test_item">
-                                        <div class="test_image"><img src="images/test_3.jpg"
-                                                alt="https://unsplash.com/@seefromthesky"></div>
-                                        <div class="test_icon"><img src="images/kayak.png" alt=""></div>
-                                        <div class="test_content_container">
-                                            <div class="test_content">
-                                                <div class="test_item_info">
-                                                    <div class="test_name">Muffet Stant</div>
-                                                    <div class="test_date">September 27, 2020</div>
+                                    <!-- Testimonial Item -->
+                                    <div class="owl-item">
+                                        <div class="test_item">
+                                            <div class="test_image lazyload"><img class="lazyload"
+                                                    data-src="images/webp/test_3.webp"
+                                                    alt="https://unsplash.com/@seefromthesky"></div>
+                                            <div class="test_icon"><img class="lazyload"
+                                                    data-src="images/webp/kayak.webp" alt=""></div>
+                                            <div class="test_content_container">
+                                                <div class="test_content">
+                                                    <div class="test_item_info">
+                                                        <div class="test_name">Muffet Stant</div>
+                                                        <div class="test_date">September 27, 2020</div>
+                                                    </div>
+                                                    <div class="test_quote_title">" You can have a plan in 5 minutes "
+                                                    </div>
+                                                    <p class="test_quote_text">Best of all is it can be as spontaneous
+                                                        as
+                                                        you like. Do you want to book for tomorrow at noon? No problem!
+                                                    </p>
                                                 </div>
-                                                <div class="test_quote_title">" You can have a plan in 5 minutes "</div>
-                                                <p class="test_quote_text">Best of all is it can be as spontaneous as
-                                                    you like. Do you want to book for tomorrow at noon? No problem!</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Testimonial Item -->
-                                <div class="owl-item">
-                                    <div class="test_item">
-                                        <div class="test_image"><img src="images/tom.jpg" alt=""></div>
-                                        <div class="test_icon"><img src="images/island_t.png" alt=""></div>
-                                        <div class="test_content_container">
-                                            <div class="test_content">
-                                                <div class="test_item_info">
-                                                    <div class="test_name">Tom Hanks</div>
-                                                    <div class="test_date">February 14, 2020</div>
+                                    <!-- Testimonial Item -->
+                                    <div class="owl-item">
+                                        <div class="test_item">
+                                            <div class="test_image lazyload"><img class="lazyload"
+                                                    data-src="images/webp/tom.webp" alt=""></div>
+                                            <div class="test_icon lazyload"><img class="lazyload"
+                                                    data-src="images/webp/island_t.webp" alt=""></div>
+                                            <div class="test_content_container">
+                                                <div class="test_content">
+                                                    <div class="test_item_info">
+                                                        <div class="test_name">Tom Hanks</div>
+                                                        <div class="test_date">February 14, 2020</div>
+                                                    </div>
+                                                    <div class="test_quote_title">" Perfect day "</div>
+                                                    <p class="test_quote_text">Everything great and all, but better not
+                                                        come
+                                                        on a trip with me</p>
                                                 </div>
-                                                <div class="test_quote_title">" Perfect day "</div>
-                                                <p class="test_quote_text">Everything great and all, but better not come
-                                                    on a trip with me</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Testimonial Item -->
-                                <div class="owl-item">
-                                    <div class="test_item">
-                                        <div class="test_image"><img src="images/hugh.jpg" alt=""></div>
-                                        <div class="test_icon"><img src="images/backpack.png" alt=""></div>
-                                        <div class="test_content_container">
-                                            <div class="test_content">
-                                                <div class="test_item_info">
-                                                    <div class="test_name">Anthony Madds</div>
-                                                    <div class="test_date">July 24, 2020</div>
+                                    <!-- Testimonial Item -->
+                                    <div class="owl-item">
+                                        <div class="test_item">
+                                            <div class="test_image lazyload"><img class="lazyload"
+                                                    data-src="images/webp/hugh.webp" alt=""></div>
+                                            <div class="test_icon lazyload"><img class="lazyload"
+                                                    data-src="images/webp/backpack.webp" alt=""></div>
+                                            <div class="test_content_container">
+                                                <div class="test_content">
+                                                    <div class="test_item_info">
+                                                        <div class="test_name">Anthony Madds</div>
+                                                        <div class="test_date">July 24, 2020</div>
+                                                    </div>
+                                                    <div class="test_quote_title">" Every detail is perfect "</div>
+                                                    <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse
+                                                        potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.
+                                                    </p>
                                                 </div>
-                                                <div class="test_quote_title">" Every detail is perfect "</div>
-                                                <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse
-                                                    potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Testimonial Item -->
-                                <div class="owl-item">
-                                    <div class="test_item">
-                                        <div class="test_image"><img src="images/vato.jpg" alt=""></div>
-                                        <div class="test_icon"><img src="images/kayak.png" alt=""></div>
-                                        <div class="test_content_container">
-                                            <div class="test_content">
-                                                <div class="test_item_info">
-                                                    <div class="test_name">Simon Sans</div>
-                                                    <div class="test_date">January 12, 2020</div>
+                                    <!-- Testimonial Item -->
+                                    <div class="owl-item">
+                                        <div class="test_item">
+                                            <div class="test_image lazyload"><img class="lazyload"
+                                                    data-src="images/webp/vato.webp" alt=""></div>
+                                            <div class="test_icon lazyload"><img class="lazyload"
+                                                    data-src="images/webp/kayak.webp" alt=""></div>
+                                            <div class="test_content_container">
+                                                <div class="test_content">
+                                                    <div class="test_item_info">
+                                                        <div class="test_name">Simon Sans</div>
+                                                        <div class="test_date">January 12, 2020</div>
+                                                    </div>
+                                                    <div class="test_quote_title">" Extra confort "</div>
+                                                    <p class="test_quote_text">It's great that you can plan a whole
+                                                        all-inclusive trip without having to resort to an agency that
+                                                        charges too much.</p>
                                                 </div>
-                                                <div class="test_quote_title">" Extra confort "</div>
-                                                <p class="test_quote_text">It's great that you can plan a whole
-                                                    all-inclusive trip without having to resort to an agency that
-                                                    charges too much.</p>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
-                            </div>
+                                <!-- Testimonials Slider Nav - Prev -->
+                                <div class="test_slider_nav test_slider_prev">
+                                    <svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px"
+                                        height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
+                                        xml:space="preserve">
+                                        <defs>
+                                            <linearGradient id='test_grad_prev'>
+                                                <stop offset='0%' stop-color='#fa9e1b' />
+                                                <stop offset='100%' stop-color='#8d4fff' />
+                                            </linearGradient>
+                                        </defs>
+                                        <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
+    								M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
+    								C22.545,2,26,5.541,26,9.909V23.091z" />
+                                        <polygon class="nav_arrow" fill="#F3F6F9" points="15.044,22.222 16.377,20.888 12.374,16.885 16.377,12.882 15.044,11.55 9.708,16.885 11.04,18.219 
+    								11.042,18.219 " />
+                                    </svg>
+                                </div>
 
-                            <!-- Testimonials Slider Nav - Prev -->
-                            <div class="test_slider_nav test_slider_prev">
-                                <svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px"
-                                    height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
-                                    xml:space="preserve">
-                                    <defs>
-                                        <linearGradient id='test_grad_prev'>
-                                            <stop offset='0%' stop-color='#fa9e1b' />
-                                            <stop offset='100%' stop-color='#8d4fff' />
-                                        </linearGradient>
-                                    </defs>
-                                    <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-								M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-								C22.545,2,26,5.541,26,9.909V23.091z" />
-                                    <polygon class="nav_arrow" fill="#F3F6F9" points="15.044,22.222 16.377,20.888 12.374,16.885 16.377,12.882 15.044,11.55 9.708,16.885 11.04,18.219 
-								11.042,18.219 " />
-                                </svg>
-                            </div>
+                                <!-- Testimonials Slider Nav - Next -->
+                                <div class="test_slider_nav test_slider_next">
+                                    <svg version="1.1" id="Layer_7" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px"
+                                        height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
+                                        xml:space="preserve">
+                                        <defs>
+                                            <linearGradient id='test_grad_next'>
+                                                <stop offset='0%' stop-color='#fa9e1b' />
+                                                <stop offset='100%' stop-color='#8d4fff' />
+                                            </linearGradient>
+                                        </defs>
+                                        <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
+    							M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
+    							C22.545,2,26,5.541,26,9.909V23.091z" />
+                                        <polygon class="nav_arrow" fill="#F3F6F9" points="13.044,11.551 11.71,12.885 15.714,16.888 11.71,20.891 13.044,22.224 18.379,16.888 17.048,15.554 
+    							17.046,15.554 " />
+                                    </svg>
+                                </div>
 
-                            <!-- Testimonials Slider Nav - Next -->
-                            <div class="test_slider_nav test_slider_next">
-                                <svg version="1.1" id="Layer_7" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px"
-                                    height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33"
-                                    xml:space="preserve">
-                                    <defs>
-                                        <linearGradient id='test_grad_next'>
-                                            <stop offset='0%' stop-color='#fa9e1b' />
-                                            <stop offset='100%' stop-color='#8d4fff' />
-                                        </linearGradient>
-                                    </defs>
-                                    <path class="nav_path" fill="#F3F6F9" d="M19,0H9C4.029,0,0,4.029,0,9v15c0,4.971,4.029,9,9,9h10c4.97,0,9-4.029,9-9V9C28,4.029,23.97,0,19,0z
-							M26,23.091C26,27.459,22.545,31,18.285,31H9.714C5.454,31,2,27.459,2,23.091V9.909C2,5.541,5.454,2,9.714,2h8.571
-							C22.545,2,26,5.541,26,9.909V23.091z" />
-                                    <polygon class="nav_arrow" fill="#F3F6F9" points="13.044,11.551 11.71,12.885 15.714,16.888 11.71,20.891 13.044,22.224 18.379,16.888 17.048,15.554 
-							17.046,15.554 " />
-                                </svg>
                             </div>
 
                         </div>
-
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
 
 
         <!-- <div class="contact">
-            <div class="contact_background" style="background-image:url(images/contact.png)"></div>
+            <div class="contact_background" data-bg="images/contact.png"></div>
 
             <div class="container">
                 <div class="row">
@@ -1112,44 +1588,23 @@
                         <div class="footer_col">
                             <div class="footer_content footer_about">
                                 <div class="logo_container footer_logo">
-                                    <div class="logo"><a href="#"><img src="images/amusement-park.png" width="40px"
-                                                alt="">Magic
+                                    <div class="logo"><a href="#"><img class="lazyload"
+                                                data-src="images/webp/amusement-park.webp" width="40px" alt="">Magic
                                             Sans</a></div>
                                 </div>
-                                <p class="footer_about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Vivamus quis vu lputate eros, iaculis consequat nisl. Nunc et suscipit urna. Integer
-                                    eleme ntum orci eu vehicula pretium.</p>
+                                <p class="footer_about_text">Created by: <br>Sergio Iván Alcázar Becerra <br>Diana
+                                    Alicia Cadena Hernández <br>Yoltic Jassiel García Guzmán</p>
                                 <ul class="footer_social_list">
-                                    <li class="footer_social_item"><a href="#"><i class="fa fa-youtube-play"></i></a>
+                                    <li class="footer_social_item"><a href="#"><i class="fab fa-youtube"></i></a>
                                     </li>
-                                    <li class="footer_social_item"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                    <li class="footer_social_item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="footer_social_item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                    <li class="footer_social_item"><a href="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Footer Column -->
-
-
-                    <!-- Footer Column -->
-                    <!-- <div class="col-lg-3 footer_column">
-                        <div class="footer_col">
-                            <div class="footer_title">tags</div>
-                            <div class="footer_content footer_tags">
-                                <ul class="tags_list clearfix">
-                                    <li class="tag_item"><a href="#">design</a></li>
-                                    <li class="tag_item"><a href="#">fashion</a></li>
-                                    <li class="tag_item"><a href="#">music</a></li>
-                                    <li class="tag_item"><a href="#">video</a></li>
-                                    <li class="tag_item"><a href="#">party</a></li>
-                                    <li class="tag_item"><a href="#">photography</a></li>
-                                    <li class="tag_item"><a href="#">adventure</a></li>
-                                    <li class="tag_item"><a href="#">travel</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> -->
 
                     <!-- Footer Column -->
                     <div class="col-lg-3 footer_column">
@@ -1159,33 +1614,38 @@
                                 <ul class="contact_info_list">
                                     <li class="contact_info_item d-flex flex-row">
                                         <div>
-                                            <div class="contact_info_icon"><img src="images/placeholder.svg" alt="">
+                                            <div class="contact_info_icon"><img class="lazyload"
+                                                    data-src="images/placeholder.svg" alt="">
                                             </div>
                                         </div>
                                         <div class="contact_info_text">Benjamin Hill 45, Condesa, CDMX</div>
                                     </li>
                                     <li class="contact_info_item d-flex flex-row">
                                         <div>
-                                            <div class="contact_info_icon"><img src="images/phone-call.svg" alt="">
+                                            <div class="contact_info_icon"><img class="lazyload"
+                                                    data-src="images/phone-call.svg" alt="">
                                             </div>
                                         </div>
                                         <div class="contact_info_text">(55) 1234 5678</div>
                                     </li>
                                     <li class="contact_info_item d-flex flex-row">
                                         <div>
-                                            <div class="contact_info_icon"><img src="images/message.svg" alt=""></div>
-                                        </div>
-                                        <div class="contact_info_text"><a
-                                                href="mailto:contactme@gmail.com?Subject=Hello"
-                                                target="_top">contact@magicsans.com</a></div>
-                                    </li>
-                                    <li class="contact_info_item d-flex flex-row">
-                                        <div>
-                                            <div class="contact_info_icon"><img src="images/planet-earth.svg" alt="">
+                                            <div class="contact_info_icon"><img class="lazyload"
+                                                    data-src="images/message.svg" alt="">
                                             </div>
                                         </div>
                                         <div class="contact_info_text"><a
-                                                href="https://colorlib.com">www.magicsans.com</a></div>
+                                                href="mailto:contact@ochrefox.net?Subject=Hello"
+                                                target="_top">contact@ochrefox.net</a></div>
+                                    </li>
+                                    <li class="contact_info_item d-flex flex-row">
+                                        <div>
+                                            <div class="contact_info_icon"><img class="lazyload"
+                                                    data-src="images/planet-earth.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="contact_info_text"><a href="https://ochrefox.net">ochrefox.net</a>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -1227,19 +1687,69 @@
 
     </div>
 
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="styles/bootstrap4/popper.min.js"></script>
-    <script src="styles/bootstrap4/bootstrap.min.js"></script>
-    <script src="plugins/owlcarousel/owl.carousel.js"></script>
-    <script src="plugins/easing/easing.js"></script>
-    <script src="js/jquery.ihavecookies.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script>
+    <!-- <script defer src="styles/bootstrap4/popper.min.js"></script> -->
+    <script defer src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script async src="plugins/owlcarousel/owl.carousel.min.js"></script>
+    <script defer src="plugins/easing/easing.min.js"></script>
+    <script defer src="js/jquery.ihavecookies.min.js"></script>
+    <script async src="js/custom.min.js"></script>
+    <script async src="plugins/lazysizes.min.js"></script>
+    <script defer>
         // Cookies
-        $('body').ihavecookies({
-            title: "Cookies & Privacy",
-            message: "This website uses cookies to ensure you get the best experience on our website.",
-            link: "privacy.html"
+        $(function () {
+            $('body').ihavecookies({
+                title: "Cookies & Privacy",
+                message: "This website uses cookies to ensure you get the best experience on our website.",
+                link: "privacy.html"
+            });
+        })
+    </script>
+    <script async>
+        $.ajax({
+            method: "POST",
+            url: 'php/redirect.php',
+        }).done(function (data) {
+            if (data === '1') {
+                $('#login-box').hide();
+                $('#register-box').hide();
+                $('#wb-box').show();
+                $('#account-box').show();
+                $('#logout-box').show();
+            }
+        });
+        var userinfo = "";
+        if (localStorage.getItem('userinfo') === null) {
+            console.log('info is null');
+            $.get('php/getUserInfo.php', function (data) {
+                localStorage.setItem('userinfo', data);
+                userinfo = JSON.parse(localStorage.getItem('userinfo'));
+            })
+        } else {
+            userinfo = JSON.parse(localStorage.getItem('userinfo'));
+        }
+        updateLabels();
+
+        function updateLabels() {
+            $('#user-back').append(userinfo.username);
+        }
+        $(document).ready(function () {
+            $('body').scrollspy({
+                target: '#navbar-scroll',
+                offset: 210
+            })
+            var offset = 200;
+            $('.navbar li a').click(function (event) {
+                event.preventDefault();
+                $($(this).attr('href'))[0].scrollIntoView();
+                scrollBy(0, -offset);
+            });
+        });
+        //add simple support for background images:
+        document.addEventListener('lazybeforeunveil', function (e) {
+            var bg = e.target.getAttribute('data-bg');
+            if (bg) {
+                e.target.style.backgroundImage = 'url(' + bg + ')';
+            }
         });
     </script>
 

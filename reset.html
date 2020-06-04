@@ -1,28 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
-	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>Reset Password - Magic Sans</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/my-login.css">
+	<!-- Icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+	<link rel="manifest" href="./site.webmanifest">
+	<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script>
+		var urlParams = new URLSearchParams(window.location.search);
+		var token = urlParams.get('token');
+		$.ajax({
+			method: "POST",
+			url: 'php/checktoken.php',
+			async: false,
+			data: {
+				token: token
+			},
+		}).done(function (data) {
+			console.log(data);
+			if (data === '0') {
+				window.location = '404.html';
+			}
+		});
+	</script>
 </head>
-<body class="my-login-page">
+
+<body class="my-login-page reset">
 	<section class="h-100">
 		<div class="container h-100">
 			<div class="row justify-content-md-center align-items-center h-100">
 				<div class="card-wrapper">
 					<div class="brand">
-						<img src="img/logo.jpg" alt="bootstrap 4 login page">
+						<a href="index.html"><img src="images/amusement-park.png" alt="logo"></img></a>
 					</div>
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Reset Password</h4>
-							<form method="POST" class="my-login-validation" novalidate="">
+							<form method="POST" class="my-login-validation needs-validation" novalidate="" id="reset">
 								<div class="form-group">
-									<label for="new-password">New Password</label>
-									<input id="new-password" type="password" class="form-control" name="password" required autofocus data-eye>
+									<input type="text" name="username" hidden autocomplete="username">
+									<label for="new_password">New Password</label>
+									<input id="new_password" type="password" class="form-control" name="new-password"
+										required autofocus data-eye autocomplete="new-password">
 									<div class="invalid-feedback">
 										Password is required
 									</div>
@@ -30,7 +60,16 @@
 										Make sure your password is strong and easy to remember
 									</div>
 								</div>
-
+								<div class="form-group">
+									<label for="confirm_password">Confirm Password</label>
+									<input id="confirm_password" type="password" class="form-control"
+										name="confirm-password" required autofocus data-eye autocomplete="new-password">
+									<div class="invalid-feedback">
+										Password is required
+									</div>
+								</div>
+								<input type="hidden" name="typeof" value="reset">
+								<input id="token" type="hidden" name="token">
 								<div class="form-group m-0">
 									<button type="submit" class="btn btn-primary btn-block">
 										Reset Password
@@ -40,15 +79,30 @@
 						</div>
 					</div>
 					<div class="footer">
-						Copyright &copy; 2017 &mdash; Your Company 
+						Copyright &copy; 2020 &mdash; Magic Sans
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="styles/bootstrap4/bootstrap.min.js"></script>
+	<script src="styles/bootstrap4/popper.min.js"></script>
 	<script src="js/my-login.js"></script>
+	<script>
+		$('#reset').submit(function (e) {
+			e.preventDefault();
+			var urlParams = new URLSearchParams(window.location.search);
+			var token = urlParams.get('token');
+			$('#token').attr('value', token);
+			var form = $(this).serialize();
+			console.log(form);
+			$.post('php/reset-password.php', form, function (data) {
+				if (data === '1') {
+					window.location = 'login.html';
+				}
+			})
+		})
+	</script>
 </body>
+
 </html>

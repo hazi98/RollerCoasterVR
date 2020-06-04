@@ -5,9 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Login - Magic Sans</title>
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/my-login.css">
-    <link rel="stylesheet" href="plugins/animate.min.css" />
+    <!-- CSS -->
+    <link href="styles/bootstrap4/bootstrap.min.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link rel="preload" href="css/my-login.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="css/my-login.css" rel="stylesheet" type="text/css">
+    </noscript>
+    <link href="css/my-login.css" rel="stylesheet" type="text/css" rel="preload" as="style">
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -23,9 +27,8 @@
             url: 'php/redirect.php',
             async: false,
         }).done(function (data) {
-            console.log(data);
             if (data === '1') {
-                window.location = 'php/welcome.php';
+                window.location = 'account.html';
             }
         });
     </script>
@@ -39,7 +42,7 @@
             <div class="row justify-content-md-center h-100">
                 <div class="card-wrapper">
                     <div class="brand">
-                        <a href="index.html"><img src="images/amusement-park.png" alt="logo"></img></a>
+                        <a href="index.html"><img src="images/webp/amusement-park.webp" alt="logo"></img></a>
                     </div>
                     <div class="card fat">
                         <div class="card-body">
@@ -48,7 +51,7 @@
 
                             </div>
                             <span class="help-block"></span>
-                            <form method="POST" id="login" class="my-login-validation" novalidate="">
+                            <form method="POST" id="login" class="my-login-validation needs-validation" novalidate>
                                 <div class="form-group">
                                     <label for="username">Username</label>
                                     <input id="username" type="text" class="form-control" name="username" value=""
@@ -100,17 +103,43 @@
         </div>
 
     </section>
-    <script src="styles/bootstrap4/bootstrap.min.js"></script>
-    <script src="styles/bootstrap4/popper.min.js"></script>
-    <script src="js/my-login.js"></script>
-    <script>
+    <script defer src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script async src="js/my-login.js"></script>
+    <script async>
+        (function () {
+            'use strict';
+
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+
         $('#login').submit(function (e) {
             e.preventDefault();
             var form = $(this).serialize();
+            // Check for redirect
+            let params = (new URL(document.location)).searchParams;
+            var redirect = params.get("redirect");
             $.post('php/login.php', form, function (data) {
                 console.log(data);
                 if (data === '1') {
-                    window.location.replace('php/welcome.php');
+                    if (redirect) {
+                        window.location = redirect;
+                    } else {
+                        window.location = 'account.html';
+                    }
                 } else {
                     $('#alert-msg').html('<strong>Error!</strong> <span id="error-msg">' + data +
                         '</span>');

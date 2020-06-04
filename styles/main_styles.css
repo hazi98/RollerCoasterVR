@@ -40,26 +40,28 @@
 1. Fonts
 ***********/
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
-
 @font-face {
 	font-family: 'Permanent Marker';
 	src: url('../fonts/PermanentMarker-Regular.ttf') format('truetype');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: 'Aclonica';
 	src: url('../fonts/Aclonica-Regular.ttf') format('truetype');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: 'Burbank';
-	src: url('../fonts/Burbank\ Big\ Regular\ Black.ttf') format('truetype');
+	src: url('../fonts/Burbank.ttf') format('truetype');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: 'Fredoka One';
 	src: url('../fonts/FredokaOne-Regular.ttf') format('truetype');
+	font-display: swap;
 }
 
 /*********************************
@@ -80,6 +82,8 @@ body {
 	font-weight: 400;
 	background: #FFFFFF;
 	color: #a5a5a5;
+	position: relative;
+	height: 100%;
 }
 
 div {
@@ -275,6 +279,10 @@ section {
 	padding: 0px !important;
 }
 
+#content {
+	position: relative;
+}
+
 .button {
 	display: inline-block;
 	height: 53px;
@@ -344,12 +352,23 @@ section {
 .header {
 	position: fixed;
 	width: 100%;
-	background: rgba(54, 19, 84, 0.6);
+	/* background: rgba(54, 19, 84, 0.6); */
+	background: rgb(2, 0, 36);
+	background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(54, 19, 84, 0.6) 60%, rgba(0, 86, 255, 0) 100%);
+	transition: background-color 0.5s ease;
 	z-index: 12;
 }
 
 .header.scrolled {
 	background: rgba(54, 19, 84, 0.85);
+}
+
+a {
+	color: #9dccff;
+}
+
+a:hover {
+	color: #fff;
 }
 
 /*********************************
@@ -451,7 +470,7 @@ section {
 }
 
 .main_nav_col {
-	height: 143px;
+	height: 120px;
 	-webkit-transition: all 400ms ease;
 	-moz-transition: all 400ms ease;
 	-ms-transition: all 400ms ease;
@@ -460,7 +479,7 @@ section {
 }
 
 .header.scrolled .main_nav_col {
-	height: 100px;
+	height: 70px;
 }
 
 /*********************************
@@ -692,7 +711,7 @@ section {
 .menu_item a {
 	display: inline-block;
 	position: relative;
-	font-family: 'Beyond';
+	font-family: 'Open Sans';
 	font-size: 36px;
 	color: #FFFFFF;
 	font-weight: 400;
@@ -2358,4 +2377,37 @@ h2 {
 	font-weight: 500;
 	font-style: normal;
 	text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
+}
+
+a.anchor {
+	display: block;
+	position: relative;
+	top: -120px;
+	visibility: hidden;
+}
+
+a.anchor-large {
+	display: block;
+	position: relative;
+	top: -180px;
+	visibility: hidden;
+}
+
+@media only screen and (max-width: 575px) {
+	a.anchor {
+		top: -80px;
+	}
+}
+
+.honk {
+	font-size: 112px;
+	font-weight: 900;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	text-shadow: #ccc 0 1px 0, #c9c9c9 0 2px 0, #bbb 0 3px 0, #b9b9b9 0 4px 0, #aaa 0 5px 0, rgba(0, 0, 0, .1) 0 6px 1px, rgba(0, 0, 0, .1) 0 0 5px, rgba(0, 0, 0, .3) 0 1px 3px, rgba(0, 0, 0, .15) 0 3px 5px, rgba(0, 0, 0, .2) 0 5px 10px, rgba(0, 0, 0, .2) 0 10px 10px, rgba(0, 0, 0, .1) 0 20px 20px;
+}
+
+/* Bootstrap additional classes to save space */
+.text-center {
+	text-align: center !important;
 }

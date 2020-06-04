@@ -8,16 +8,14 @@
     <meta name="description" content="Magic Sans Theme Park">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="plugins/owlcarousel/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="plugins/owlcarousel/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="plugins/owlcarousel/animate.css">
-    <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="styles/elements_styles.css">
-    <link rel="stylesheet" type="text/css" href="styles/responsive.css">
-    <link rel="stylesheet" href="plugins/animate.min.css" />
-    <link rel="stylesheet" href="styles/cookies.css">
+    <link href="styles/bootstrap4/bootstrap-grid.min.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="plugins/fontawesome-free-5.13.0-web/css/fontawesome-basic.css" rel="stylesheet" type="text/css"
+        rel="preload" as="style">
+    <link href="plugins/fontawesome-free-5.13.0-web/css/brands.min.css" rel="stylesheet" type="text/css" rel="preload"
+        as="style">
+    <link href="styles/elements_styles.min.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="styles/responsive.css" rel="stylesheet" type="text/css" rel="preload" as="style">
+    <link href="styles/cookies.css" rel="stylesheet" type="text/css" rel="preload" as="style">
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -44,12 +42,9 @@
                             <div class="phone">(55) 1234 5678</div>
                             <div class="social">
                                 <ul class="social_list">
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-youtube-play"
-                                                aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-facebook"
-                                                aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-twitter"
-                                                aria-hidden="true"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
                                 </ul>
                             </div>
                             <div class="user_box ml-auto">
@@ -68,17 +63,17 @@
                     <div class="row">
                         <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                             <div class="logo_container">
-                                <div class="logo"><a href="index.html"><img src="images/amusement-park.png" width="40px"
-                                            alt="">Magic Sans</a>
+                                <div class="logo"><a href="index.html"><img src="images/webp/amusement-park.webp"
+                                            width="40px" alt="">Magic Sans</a>
                                 </div>
                             </div>
                             <div class="main_nav_container ml-auto">
                                 <ul class="main_nav_list">
                                     <li class="main_nav_item"><a href="#">home</a></li>
-                                    <li class="main_nav_item"><a href="about.html">about us</a></li>
-                                    <li class="main_nav_item"><a href="offers.html">offers</a></li>
-                                    <li class="main_nav_item"><a href="blog.html">news</a></li>
-                                    <li class="main_nav_item"><a href="contact.html">contact</a></li>
+                                    <li class="main_nav_item"><a href="#">about us</a></li>
+                                    <li class="main_nav_item"><a href="#">offers</a></li>
+                                    <li class="main_nav_item"><a href="#">news</a></li>
+                                    <li class="main_nav_item"><a href="#">contact</a></li>
                                 </ul>
                             </div>
                             <div class="content_search ml-lg-0 ml-auto">
@@ -130,10 +125,10 @@
                 </div>
                 <ul>
                     <li class="menu_item"><a href="#">home</a></li>
-                    <li class="menu_item"><a href="about.html">about us</a></li>
-                    <li class="menu_item"><a href="offers.html">offers</a></li>
-                    <li class="menu_item"><a href="blog.html">news</a></li>
-                    <li class="menu_item"><a href="contact.html">contact</a></li>
+                    <li class="menu_item"><a href="#">about us</a></li>
+                    <li class="menu_item"><a href="#">offers</a></li>
+                    <li class="menu_item"><a href="#">news</a></li>
+                    <li class="menu_item"><a href="#">contact</a></li>
                 </ul>
             </div>
         </div>
@@ -142,7 +137,7 @@
 
         <div class="home">
             <div class="home_background parallax-window" data-parallax="scroll"
-                data-image-src="images/ferris-wheel.jpg"></div>
+                data-image-src="images/webp/ferris-wheel.webp"></div>
             <div class="home_content">
                 <div class="home_title">privacy / ToS</div>
             </div>
@@ -154,6 +149,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
+                        <a class="anchor" id="privacy"></a>
                         <h2 class="intro_title text-center">Privacy Policy</h2>
                         <p>Your privacy is important to us. It is Magic Sans' policy to respect your privacy regarding
                             any information we may collect from you across our website, <a
@@ -183,6 +179,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                        <a class="anchor" id="tos"></a>
                         <h2 class="intro_title text-center">Magic Sans Terms of Service</h2>
                         <h3>1. Terms</h3>
                         <p>By accessing the website at <a href="http://magicsans.com">http://magicsans.com</a>, you are
@@ -275,10 +272,11 @@
                                     Vivamus quis vu lputate eros, iaculis consequat nisl. Nunc et suscipit urna. Integer
                                     eleme ntum orci eu vehicula pretium.</p>
                                 <ul class="footer_social_list">
-                                    <li class="footer_social_item"><a href="#"><i class="fa fa-youtube-play"></i></a>
+                                    <li class="footer_social_item"><a href="#"><i class="fab fa-youtube"></i></a>
                                     </li>
-                                    <li class="footer_social_item"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                    <li class="footer_social_item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="footer_social_item"><a href="#"><i class="fab fa-facebook"></i></a>
+                                    </li>
+                                    <li class="footer_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
                                 </ul>
                             </div>
                         </div>

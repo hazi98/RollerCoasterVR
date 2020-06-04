@@ -12,6 +12,13 @@ body.my-login-page {
 	font-size: 14px;
 }
 
+.my-login-page.reset {
+	background: #333333;
+	background: -webkit-linear-gradient(to left, #dd1818, #333333);
+	background: linear-gradient(to left, #dd1818, #333333);
+	font-size: 14px;
+}
+
 .my-login-page .brand {
 	width: 90px;
 	height: 90px;
@@ -85,7 +92,8 @@ body.my-login-page {
 	}
 }
 
-.invalid-username {
+.invalid-username,
+.invalid-email {
 	display: none;
 	width: 100%;
 	margin-top: .25rem;
