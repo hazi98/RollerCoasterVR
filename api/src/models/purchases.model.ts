@@ -26,6 +26,11 @@ export class Purchases extends Entity {
   })
   created: string;
 
+  @property({
+    type: 'string',
+  })
+  amount: string;
+
   @belongsTo(() => Users, {name: 'user_purchases'})
   fk_users: number;
 

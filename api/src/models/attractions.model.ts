@@ -16,6 +16,12 @@ export class Attractions extends Entity {
   name: string;
 
   @property({
+    type: 'string',
+    required: true,
+  })
+  prueba: string;
+
+  @property({
     type: 'number',
   })
   adults?: number;
@@ -30,7 +36,6 @@ export class Attractions extends Entity {
     required: true,
   })
   fk_users: number;
-
 
   constructor(data?: Partial<Attractions>) {
     super(data);

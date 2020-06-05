@@ -735,6 +735,12 @@
                                         </select>
                                     </div>
                                     <div class="search_item">
+                                        <div>prueba</div>
+                                        <input type="text" name="prueba" class="search_input form-control amount-group"
+                                            required name="prueba">
+
+                                    </div>
+                                    <div class="search_item">
                                         <div>adults</div>
                                         <input type="number" name="adults"
                                             class="search_input form-control amount-group" min="0" required value="0">
@@ -775,6 +781,7 @@
                                     $('#search_form_4').validate({
                                         rules: {
                                             "name": "required",
+                                            "prueba": "required",
                                             adults: {
                                                 require_from_group: [1, ".amount-group"],
                                                 greater_than_number: [0, ".amount-group"]
